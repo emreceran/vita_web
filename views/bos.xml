@@ -1,0 +1,1037 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+    /* Side Menu */
+    .side-menu {
+    width: 300px;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+    top: 250px;
+    left: 80px;
+    }
+
+    .side-menu ul {
+    list-style-type: none;
+    padding: 0;
+    }
+
+    .side-menu ul li {
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 10001;
+    }
+
+    .side-menu ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+    padding: 10px;
+    display: block;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    }
+
+    .side-menu ul li a:hover {
+    background-color: #b44454;
+    color: #fff;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #b44454;
+    }
+
+    .box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    }
+
+    .box-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    }
+
+    .box-text {
+    margin-left: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    }
+
+    .box-text small {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    }
+
+    .box-text span {
+    font-size: 16px;
+    color: #b44454;
+    line-height: 1.2;
+    }
+
+    /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
+    .side-menu ul li a:hover .box-text span,
+    .side-menu ul li a:hover .box-text small {
+    color: #fff; /* Hover sırasında tüm yazılar beyaz */
+    }
+
+    /* Carousel */
+    .carousel {
+    display: none;
+    position: absolute;
+    top: 50%; /* Ortalamak için %50 */
+    left: 100%;
+    width: 760px; /* 190px * 4 = 760px (4 item göstermek için) */
+    height: 220px;
+    background-color: transparent;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    overflow: hidden;
+    transform: translateY(-50%); /* Carousel'i dikeyde ortalamak için */
+    }
+
+    .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: max-content;
+    }
+
+    /* Carousel Item */
+    .carousel-item {
+    position: relative;
+    flex: 0 0 190px; /* Genişlik 190px */
+    height: 220px; /* Yükseklik 220px */
+    margin: 0;
+    padding: 0;
+    display: block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Overlay'in taşmaması için */
+    transition: transform 0.3s ease;
+    }
+
+    .carousel-item img {
+    width: 190px; /* Genişlik 190px */
+    height: 220px; /* Yükseklik 220px */
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Hover sırasında zoom efekti için */
+    }
+
+    .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Daha şeffaf gradyan */
+    z-index: 2; /* Gradient, img'nin üzerinde olacak */
+    transition: opacity 0.3s ease;
+    }
+
+    /* Overlay */
+    .carousel-item .item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Şeffaflık arttı, daha açık oldu */
+    transition: opacity 0.3s ease; /* Hover sırasında şeffaflaşacak */
+    z-index: 2; /* Overlay en üstte görünecek */
+    }
+
+    /* Hover sırasında carousel item'i büyür ve overlay kaybolur */
+    .carousel-item:hover .item-overlay {
+    opacity: 0; /* Hover'da overlay şeffaflaşır */
+    }
+
+    .carousel-item:hover {
+    z-index: 3; /* Hover edilen item diğerlerinin üstünde görünür */
+    }
+
+    .carousel-item:hover img {
+    transform: scale(1.1); /* Hover sırasında resim zoom yapılır */
+    }
+
+    .carousel-title,
+    .carousel-subtitle {
+    position: absolute;
+    left: 50%;
+    font-family: 'Roboto', sans-serif !important;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    z-index: 3;
+    opacity: 0; /* Başlangıçta görünmez */
+    transition: opacity 0.3s ease;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Gölge ekleniyor */
+    line-height: 1.2;
+
+    }
+
+    .carousel-title {
+    top: 20%;
+    font-size: 28px;
+    }
+
+    .carousel-subtitle {
+    margin-top: 5px;
+    font-size: 24px;
+    text-align: center;
+    }
+
+    .carousel-item:hover .carousel-title,
+    .carousel-item:hover .carousel-subtitle {
+    opacity: 1;
+    }
+
+    /* Overlay */
+    .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    }
+
+    .carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+    }
+
+    .carousel-prev {
+    left: 5px;
+    }
+
+    .carousel-next {
+    right: 5px;
+    }
+
+    /* Hover sırasında carousel gösterilecek */
+    .side-menu ul li:hover .carousel {
+    display: block;
+    z-index: 10001;
+    }
+
+    /* Side-menu hover sırasında overlay aktif olacak */
+    .side-menu:hover .overlay {
+    display: block;
+    }
+
+    /* Mouse side-menu'den ayrıldığında overlay kapanacak */
+    .side-menu ul li:hover ~ .overlay {
+    display: none;
+    }
+
+
+    .custom-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
+    margin: 50px;
+    align-items: flex-start;
+    padding-left: 350px;
+    }
+
+    .custom-red-box {
+    width: 260px;
+    height: 520px;
+    background-color: red;
+    }
+
+    .custom-green-box {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 1200px;
+    min-height: 500px;
+    background-color: transparent;
+    }
+
+    .centered-image {
+    width: 960px;
+    height: 540px;
+    object-fit: cover;
+    dispaly: block;
+    margin: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    }
+
+    .text-box {
+    width: 100%; /* Metin kutusu kutu genişliğinde olacak */
+    max-width: 960px; /* İstenirse maksimum genişlik eklenebilir */
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    padding: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0; /* Alt sol köşedeki border-radius kaldırıldı */
+    border-bottom-right-radius: 0; /* Alt sağ köşedeki border-radius kaldırıldı */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .custom-separator {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    }
+
+    .custom-separator h2 {
+    font-size: 24px;
+    color: #b44454;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    margin-right: 10px;
+    margin-left: 0; /* Sola hizalamak için */
+    white-space: nowrap;
+    }
+
+    .custom-separator::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background-color: #b44454;
+    margin-left: 10px; /* Başlıkla çizgi arasında boşluk */
+    }
+
+    .hizmetler-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Varsayılan olarak 4 sütun */
+    gap: 15px;
+    width: 100%;
+    max-width: 960px;
+    padding: 0;
+    background-color: #fff;
+    }
+
+    .hizmet-kutusu {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    }
+
+    .hizmet-kutusu:hover {
+    transform: scale(1.05); /* Hover sırasında biraz büyüme efekti */
+    }
+
+    .hizmet-kutusu img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    }
+
+    .hizmet-baslik {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px 10px;
+    color: #333;
+    }
+
+    .hizmet-aciklama {
+    font-size: 14px;
+    margin: 0 10px 10px 10px;
+    color: #666;
+    }
+
+    .hizmetler-baslik {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b44454;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%; /* Genişliği tam yap */
+    max-width: 960px; /* Kartların genişliği ile aynı yap */
+    }
+
+    /* Responsive Ayarlar */
+    @media (max-width: 1024px) {
+    .hizmetler-container {
+    grid-template-columns: repeat(3, 1fr); /* Tabletler için 3 sütun */
+    }
+    }
+
+    @media (max-width: 768px) {
+    .hizmetler-container {
+    grid-template-columns: repeat(2, 1fr); /* Küçük ekranlar için 2 sütun */
+    }
+    }
+
+    @media (max-width: 480px) {
+    .hizmetler-container {
+    grid-template-columns: 1fr; /* Mobil ekranlar için 1 sütun */
+    }
+
+    .hizmet-baslik {
+    font-size: 14px; /* Daha küçük başlık yazı boyutu */
+    }
+
+    .hizmet-aciklama {
+    font-size: 12px; /* Daha küçük açıklama yazı boyutu */
+    }
+    }
+
+    .custom-cards-container {
+    width: 100%;
+    max-width: 960px; /* text-box genişliği ile aynı */
+    display: flex;
+    margin-bottom: 20px;
+    padding: 0;
+    }
+
+    .custom-cards {
+    height: 150px;
+    flex: 1; /* Kart genişliğinin eşit olarak dağılmasını sağlar */
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: white;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0; /* Kenar yuvarlatmasını kaldırır */
+    margin: 0; /* Kartlar arasında boşluk yok */
+    }
+
+    .custom-cards img {
+    max-height: 60px;
+    height: auto;
+    margin-right: 10px;
+    }
+
+    .custom-cards .cards-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+    .custom-cards h5 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+    color: #fff;
+    }
+
+    .custom-cards p {
+    max-width: 200px;
+    word-wrap: break-word;
+    text-align: left;
+    font-size: 9px;
+    margin: 5px 0 0 0;
+    color: #f1f1f1;
+    }
+
+    .custom-cards:hover {
+    box-shadow: 0px 6px 6px 2px rgba(61, 61, 61, 0.5);
+    transform: scale(1.05);
+    z-index: 10;
+    }
+
+    /* Kart Renkleri */
+    .custom-card1 {
+    background-color: #b04656;
+    }
+
+    .custom-card2 {
+    background-color: #913A47;
+    }
+
+    .custom-card3 {
+    background-color: #636466;
+    }
+
+
+    /* Akordeon Genel Stil */
+    .custom-accordion {
+    color: #949599;
+    border: 2px solid #b04656;
+    border-top-left-radius: 0; /* Üst sol köşede radius yok */
+    border-top-right-radius: 0; /* Üst sağ köşede radius yok */
+    border-bottom-left-radius: 0.5rem; /* Alt sol köşede radius var */
+    border-bottom-right-radius: 0.5rem; /* Alt sağ köşede radius var */
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 960px;
+    }
+
+
+    .custom-tab {
+    position: relative;
+    }
+
+    .custom-tab input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    }
+
+    .custom-tab__label,
+    .custom-tab__close {
+    display: flex;
+    color: white;
+    background: #b04656;
+    cursor: pointer;
+    justify-content: space-between;
+    padding: 1rem;
+    }
+
+    .custom-tab__label::after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transform: rotate(90deg);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Daha yumuşak bir animasyon */
+    }
+
+    .custom-tab input:checked + .custom-tab__label::after {
+    transform: rotate(270deg);
+    }
+
+    .custom-tab__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.35s;
+    }
+
+    .custom-tab input:checked ~ .custom-tab__content {
+    max-height: 10rem;
+    }
+
+    .custom-tab__content p {
+    margin: 0;
+    padding: 1rem;
+    }
+
+    /* Hover animasyonu */
+    .custom-tab input:not(:checked) + .custom-tab__label:hover::after {
+    animation: custom-bounce 0.5s infinite;
+    }
+
+    @keyframes custom-bounce {
+    25% {
+    transform: rotate(90deg) translate(0.25rem);
+    }
+    75% {
+    transform: rotate(90deg) translate(-0.25rem);
+    }
+    }
+
+    .faq-baslik {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b04656;
+    padding: 10px 20px;
+    border-top-left-radius: 10px; /* Sadece üst köşelerde radius */
+    border-top-right-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 960px; /* Akordeon genişliği ile aynı */
+    margin-bottom: 0; /* Akordeona bitişik olacak */
+    border-bottom-left-radius: 0; /* Alt köşelerde radius kaldırıldı */
+    border-bottom-right-radius: 0;
+    }
+</style>
+
+<div class="custom-container">
+<div class="side-menu mobillisil">
+    <ul>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/672-7149a51b/tower-crane.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>MAKİNE GRUBU</span>
+                        <small>Periyodik Kontrolleri</small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/684-f8093530/Kald%C4%B1rma%20Ekipmanlar%C4%B1%20%284%29.webp" alt="Image 1" loading="lazy">
+                        <div class="carousel-title">Kaldırma Ekipmanları</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/687-c0e90f28/bas%C4%B1n%C3%A7l%C4%B1.png" alt="Image 2" loading="lazy">
+                        <div class="carousel-title">Basınçlı Kaplar</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/690-cbf6e543/makine%20tezgahlar%C4%B1.png" alt="Image 3" loading="lazy">
+                        <div class="carousel-title">Makine Tezgahları</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/685-852126de/i%C5%9F%20makineleri.png" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">İş Makineleri</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/686-1c27d604/raf%20sistemleri.png" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Raf Sistemleri</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/688-301080de/end%C3%BCstriyel%20kap%C4%B1lar.png" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Endüstriyel Kapılar</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/689-973b0c30/kanca%20alt%C4%B1.png" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Kanca Altı Ekipmanları</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/673-2e95544b/voltmeter.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>ELEKTRİK GRUBU</span>
+                        <small>Periyodik Kontrolleri</small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/922" alt="Image 1" loading="lazy">
+                        <div class="carousel-title">Topraklama Ölçümleri</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy">
+                        <div class="carousel-title">Elektrik İç Tesisat Uygunluk</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/920" alt="Image 3" loading="lazy">
+                        <div class="carousel-title">Paratoner Yıldırımdan Korunma</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/911" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Kaçak Artık Akım Rolesi</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/909" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Pano Fonksiyon</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/914" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Pano Görsel</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/910" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Pano Termografi</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/913" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Jeneratör</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/908" alt="Image 5" loading="lazy">
+                        <div class="carousel-title">Katodik Koruma Ölçümleri</div>
+                        <div class="item-overlay"></div>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/671-9aa36127/plumbing.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>TESİSAT GRUBU</span>
+                        <small>Periyodik Kontrolleri</small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy">
+                        <div class="carousel-title">Yangın Tesisatı</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 2" loading="lazy">
+                        <div class="carousel-title">Havalandırma Tesisatı</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy">
+                        <div class="carousel-title">Algılama Alarm Sistemleri</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Paratoner Tesisatı</div>
+                        <div class="item-overlay"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/669-2124dc59/laboratory.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>İŞ HİJYENİ</span>
+                        <small>Laboratuvarı</small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy">
+                        <div class="carousel-title">Aydınlatma Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 2" loading="lazy">
+                        <div class="carousel-title">Kişisel Gürültü Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy">
+                        <div class="carousel-title">Ortam Gürültü Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Termal Konfor Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">El Kol Tüm Vücut Titreşim Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Elektromanyetik Alan Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Toplam Toz Konsantrasyon Tayini</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Solunabilir Toz Konsantrasyon Tayini</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Gaz ve Buhar Konsantrasyon Tayini</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Uçucu Organik Bileşik (VOC) Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Ağır Metal Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Kişisel Gaz Ölçümü</div>
+                        <div class="item-overlay"></div>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/668-b8a53d21/shield.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>PATLAMADAN</span>
+                        <small>Korunma</small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy">
+                        <div class="carousel-title"> Patlamadan Korunma Dökümantasyonu</div>
+                        <div class="item-overlay"></div>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/670-61bac291/construction.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>STATİK ANALİZ</span>
+                        <small></small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy">
+                        <div class="carousel-title">Statik Analiz</div>
+                        <div class="item-overlay"></div>
+                    </div>
+
+                </div></div></li>
+        <li>
+            <a href="#section1">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/661-2b0d5fc9/inspecting.webp" alt="Placeholder Image" loading="lazy">
+                    </div>
+                    <div class="box-text">
+                        <span>TESİSAT PROJE</span>
+                        <small>DEĞERLENDİRME</small>
+                    </div>
+                </div>
+            </a>
+
+
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy">
+                        <div class="carousel-title">Yangın Tesisatı Proje Değerlendirme</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 2" loading="lazy">
+                        <div class="carousel-title">Havalandırma Proje Değerlendirme</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy">
+                        <div class="carousel-title">Algılama Alarm Sistemleri Proje Değerlendirme</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy">
+                        <div class="carousel-title">Elektrik Tesisatı Proje Değerlendirme</div>
+                        <div class="item-overlay"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy">
+                        <div class="carousel-title">Paratoner Tesisatı Proje Değerlendirme</div>
+                        <div class="item-overlay"></div>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+<div class="overlay"></div>
+
+
+<div class="custom-green-box">
+    <img src="https://via.placeholder.com/750x500" alt="750x500 boyutunda görsel" class="centered-image" loading="lazy">
+
+    <div class="text-box">
+        <div id="basincli" class="custom-separator">
+            <h2>Başlık</h2>
+        </div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec diam nec est viverra suscipit. Duis nec metus nec ipsum aliquet tempus a id eros. Cras sit amet malesuada purus, nec cursus nisi. Vivamus et justo sit amet libero malesuada ultricies. Maecenas finibus, lacus id bibendum aliquet, dolor nunc aliquam elit, a fringilla ligula mi et libero.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec diam nec est viverra suscipit. Duis nec metus nec ipsum aliquet tempus a id eros. Cras sit amet malesuada purus, nec cursus nisi. Vivamus et justo sit amet libero malesuada ultricies. Maecenas finibus, lacus id bibendum aliquet, dolor nunc aliquam elit, a fringilla ligula mi et libero.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec diam nec est viverra suscipit. Duis nec metus nec ipsum aliquet tempus a id eros. Cras sit amet malesuada purus, nec cursus nisi. Vivamus et justo sit amet libero malesuada ultricies. Maecenas finibus, lacus id bibendum aliquet, dolor nunc aliquam elit, a fringilla ligula mi et libero.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec diam nec est viverra suscipit. Duis nec metus nec ipsum aliquet tempus a id eros. Cras sit amet malesuada purus, nec cursus nisi. Vivamus et justo sit amet libero malesuada ultricies. Maecenas finibus, lacus id bibendum aliquet, dolor nunc aliquam elit, a fringilla ligula mi et libero.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec diam nec est viverra suscipit. Duis nec metus nec ipsum aliquet tempus a id eros. Cras sit amet malesuada purus, nec cursus nisi. Vivamus et justo sit amet libero malesuada ultricies. Maecenas finibus, lacus id bibendum aliquet, dolor nunc aliquam elit, a fringilla ligula mi et libero.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec diam nec est viverra suscipit. Duis nec metus nec ipsum aliquet tempus a id eros. Cras sit amet malesuada purus, nec cursus nisi. Vivamus et justo sit amet libero malesuada ultricies. Maecenas finibus, lacus id bibendum aliquet, dolor nunc aliquam elit, a fringilla ligula mi et libero.
+        </p>
+    </div>
+
+
+    <div class="custom-cards-container">
+        <div class="custom-cards custom-card1">
+            <img src="https://img.icons8.com/clouds/100/000000/box.png" loading="lazy">
+            <div class="cards-content">
+                <h5>Help Scout plus</h5>
+                <p class="line1">No limitation - It's got everything that you'll need as you grow</p>
+            </div>
+        </div>
+
+        <div class="custom-cards custom-card2">
+            <img src="https://img.icons8.com/clouds/100/000000/groups.png" loading="lazy">
+            <div class="cards-content">
+                <h5>10 Users</h5>
+                <p class="line2">$50/month gets you 10 users, and you can add more at $10 per user</p>
+            </div>
+        </div>
+
+        <div class="custom-cards custom-card3">
+            <img src="https://img.icons8.com/fluent/100/000000/trophy.png" loading="lazy">
+            <div class="cards-content">
+                <h5>World Class Support</h5>
+                <p class="line3">We'll help you get started and be there when you have questions</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-baslik">Sıkça Sorulan Sorular</div>
+    <section class="custom-accordion">
+        <div class="custom-tab">
+            <input type="checkbox" name="accordion-1" id="cb1" checked="">
+            <label for="cb1" class="custom-tab__label">Checkbox</label>
+            <div class="custom-tab__content">
+                <p>Pure CSS accordion based on the "input:checked + label" style trick.</p>
+            </div>
+        </div>
+        <div class="custom-tab">
+            <input type="checkbox" name="accordion-1" id="cb2">
+            <label for="cb2" class="custom-tab__label">Open multiple</label>
+            <div class="custom-tab__content">
+                <p>Using <code><input type="checkbox"></code> allows to have several tabs open at the same time.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="hizmetler-baslik">Diger Hizmetlerimiz</div>
+
+    <div class="hizmetler-container">
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">LVD Testi</div>
+            <div class="hizmet-aciklama">EN IEC 60335-2-7 Çamaşır Makinesi LVD Testi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">Hidrolik Pres</div>
+            <div class="hizmet-aciklama">Hidrolik Pres Periyodik Kontrol Muayenesi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">IP Testi</div>
+            <div class="hizmet-aciklama">Sızdırmazlık Testi - IP Koruma Testi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">Kazan</div>
+            <div class="hizmet-aciklama">Kazan Periyodik Kontrol Muayenesi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">Caraskal</div>
+            <div class="hizmet-aciklama">Caraskal Periyodik Kontrol Muayenesi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">LVD Testi</div>
+            <div class="hizmet-aciklama">EN IEC 60335-2-5 Bulaşık Makinesi LVD Testi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">Havalandırma Tesisatı</div>
+            <div class="hizmet-aciklama">Havalandırma Tesisatı Periyodik Kontrol Muayenesi</div>
+        </div>
+
+        <div class="hizmet-kutusu">
+            <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+            <div class="hizmet-baslik">Dış Cephe Asansörü</div>
+            <div class="hizmet-aciklama">Dış Cephe Asansörü Periyodik Kontrol Muayenesi</div>
+        </div>
+    </div>
+</div>
+</div>

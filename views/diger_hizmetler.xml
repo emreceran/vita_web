@@ -1,0 +1,145 @@
+<odoo>
+    <template id="diger_hizmetler" name="Other Services">
+
+        <style>
+    /* Hizmetler Başlık Stili */
+    .hizmetler-baslik {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #b44454;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 100%;
+        max-width: 960px;
+    }
+
+    /* Hizmetler Konteyner ve Hizmet Kutusu */
+    .hizmetler-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Varsayılan olarak 3 sütun */
+        gap: 15px;
+        width: 100%;
+        max-width: 960px;
+        padding: 0;
+        background-color: #fff;
+    }
+
+    .hizmet-kutusu {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .hizmet-kutusu:hover {
+        transform: scale(1.05); /* Hover sırasında biraz büyüme efekti */
+    }
+
+    .hizmet-kutusu img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .hizmet-baslik {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0 5px 10px;
+        color: #333;
+    }
+
+    .hizmet-aciklama {
+        font-size: 14px;
+        margin: 0 10px 10px 10px;
+        color: #666;
+    }
+
+    /* Responsive Ayarlar */
+    @media (max-width: 1024px) {
+        .hizmetler-container {
+            grid-template-columns: repeat(3, 1fr); /* Tabletler için 3 sütun */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hizmetler-container {
+            grid-template-columns: repeat(2, 1fr); /* Küçük ekranlar için 2 sütun */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hizmetler-container {
+            grid-template-columns: 1fr; /* Mobil ekranlar için 1 sütun */
+        }
+
+        .hizmet-baslik {
+            font-size: 14px;
+        }
+
+        .hizmet-aciklama {
+            font-size: 12px;
+        }
+    }
+</style>
+
+
+        <!-- Başlık -->
+        <div class="hizmetler-baslik">Diğer Hizmetlerimiz</div>
+
+        <!-- Hizmetler Konteyneri -->
+        <div class="hizmetler-container">
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">LVD Testi</div>
+                <div class="hizmet-aciklama">EN IEC 60335-2-7 Çamaşır Makinesi LVD Testi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">Hidrolik Pres</div>
+                <div class="hizmet-aciklama">Hidrolik Pres Periyodik Kontrol Muayenesi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">IP Testi</div>
+                <div class="hizmet-aciklama">Sızdırmazlık Testi - IP Koruma Testi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">Kazan</div>
+                <div class="hizmet-aciklama">Kazan Periyodik Kontrol Muayenesi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">Caraskal</div>
+                <div class="hizmet-aciklama">Caraskal Periyodik Kontrol Muayenesi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">LVD Testi</div>
+                <div class="hizmet-aciklama">EN IEC 60335-2-5 Bulaşık Makinesi LVD Testi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">Havalandırma Tesisatı</div>
+                <div class="hizmet-aciklama">Havalandırma Tesisatı Periyodik Kontrol Muayenesi</div>
+            </div>
+
+            <div class="hizmet-kutusu">
+                <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy" />
+                <div class="hizmet-baslik">Dış Cephe Asansörü</div>
+                <div class="hizmet-aciklama">Dış Cephe Asansörü Periyodik Kontrol Muayenesi</div>
+            </div>
+        </div>
+
+    </template>
+</odoo>

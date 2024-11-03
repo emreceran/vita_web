@@ -1,0 +1,27 @@
+<odoo>
+    <template id="products_item_no_price_button" inherit_id="website_sale.products_item">
+        <!-- 'o_wsale_product_sub' class'ına sahip div'i fiyat ve buton alanlarını kaldırmak için hedefliyoruz -->
+        <xpath expr="//div[hasclass('o_wsale_product_information')]" position="replace">
+
+            <div class="o_wsale_product_information position-relative d-flex flex-column flex-grow-1 flex-shrink-1">
+                <div class="o_wsale_product_information_text flex-grow-1">
+                    <h6 class="o_wsale_products_item_title mb-2">
+                        <a class="text-primary text-decoration-none" itemprop="name" t-att-href="product_href" t-att-content="product.name" t-field="product.name" />
+                        <a t-if="not product.website_published" role="button" t-att-href="product_href" class="btn btn-sm btn-danger" title="This product is unpublished.">
+                            Unpublished
+                        </a>
+                    </h6>
+
+                    <div class="oe_subdescription mb-2 text-muted small" contenteditable="false">
+                        <div itemprop="description" t-field="product.description_sale"/>
+                    </div>
+                </div>
+
+            </div>
+
+        </xpath>
+
+
+
+    </template>
+</odoo>
