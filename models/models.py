@@ -10,6 +10,7 @@ class ProductTemplate(models.Model):
 
     accordion_content_html = fields.Html("Accordion Content", sanitize_overridable=True, sanitize_attributes=False, translate=html_translate, sanitize_form=False)
     custom_description_html = fields.Html('Product Description', sanitize_overridable=True, sanitize_attributes=False, translate=html_translate, sanitize_form=False)
+    related_products_html = fields.Html('Related Products', sanitize_overridable=True, sanitize_attributes=False, translate=html_translate, sanitize_form=False)
 
 
 

@@ -82,7 +82,8 @@
                             <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
                             <t t-if="product">
                                 <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>" category.</t>
-                                <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.custom_description_html"/>
+                                <div class="mb16 position-fixed " style="z-index:12000;  background-color:blue; height:300px;"
+                                     id="product_header" t-att-data-editor-message="editor_msg" t-field="product.custom_description_html"/>
                             </t>
 
                             <!--                            <div class="oe_structure oe_empty oe_structure_not_nearest mt16"-->
@@ -106,6 +107,12 @@
                                 <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>" category.</t>
                                 <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.accordion_content_html"/>
                             </t>
+
+<!--                                 &lt;!&ndash; Ürün Özgün İçerik Alanı (Drag-and-Drop) &ndash;&gt;-->
+<!--                                <t t-if="product">-->
+<!--                                    <t t-set='editor_msg'>Diğer Ürünler eklemek için  "<t t-esc='product.name'/>" category.</t>-->
+<!--                                    <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.related_products_html"/>-->
+<!--                                </t>-->
 
                             <t t-call="vita_web.diger_hizmetler"/>
 

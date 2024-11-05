@@ -12,7 +12,7 @@
             padding: 20px;
             position: fixed;
             top: 10vh;
-            z-index: 100000;
+            z-index: 10;
             overflow: visible;
             align-self: start;
             transition: transform 0.3s ease, width 0.3s ease; /* Geçiş animasyonu */
@@ -284,7 +284,7 @@
             display: none;
             }
 
-    
+
 
 
             }
