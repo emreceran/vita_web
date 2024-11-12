@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': "vita_web",
+   
+
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -30,6 +32,7 @@ Long description of module's purpose
         'views/diger_hizmetler.xml',
         'views/product_list.xml',
         'views/products_item.xml',
+        'views/sorular.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

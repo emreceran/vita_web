@@ -1,0 +1,451 @@
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+    /* Side Menu */
+    .side-menu {
+    width: 300px;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+    top: 320px;
+    left: 80px;
+    }
+   
+    /* Menü footer'a çarptığında "absolute" pozisyona geçmesi için bir CSS sınıfı */
+    .side-absolute {
+        border: 3px solid blue;
+        width: 300px;
+        padding: 20px;
+        position: absolute;
+        z-index: 1000;
+    }
+
+    .side-menu ul {
+    list-style-type: none;
+    padding: 0;
+    }
+
+    .side-menu ul li {
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 10001;
+    }
+
+    .side-menu ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+    padding: 10px;
+    display: block;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    }
+
+    .side-menu ul li a:hover {
+    background-color: #b44454;
+    color: #fff;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #b44454;
+    }
+
+    .box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    }
+
+    .box-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    }
+
+    .box-text {
+    margin-left: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    }
+
+    .box-text small {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    }
+
+    .box-text span {
+    font-size: 16px;
+    color: #b44454;
+    line-height: 1.2;
+    }
+
+    /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
+    .side-menu ul li a:hover .box-text span,
+    .side-menu ul li a:hover .box-text small {
+    color: #fff; /* Hover sırasında tüm yazılar beyaz */
+    }
+
+    /* Carousel */
+    .carousel {
+    display: none;
+    position: absolute;
+    top: 50%; /* Ortalamak için %50 */
+    left: 100%;
+    width: 760px; /* 190px * 4 = 760px (4 item göstermek için) */
+    height: 220px;
+    background-color: transparent;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    overflow: hidden;
+    transform: translateY(-50%); /* Carousel'i dikeyde ortalamak için */
+    }
+
+    .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: max-content;
+    }
+
+    /* Carousel Item */
+    .carousel-item {
+    position: relative;
+    flex: 0 0 190px; /* Genişlik 190px */
+    height: 220px; /* Yükseklik 220px */
+    margin: 0;
+    padding: 0;
+    display: block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Overlay'in taşmaması için */
+    transition: transform 0.3s ease;
+    }
+
+    .carousel-item img {
+    width: 190px; /* Genişlik 190px */
+    height: 220px; /* Yükseklik 220px */
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Hover sırasında zoom efekti için */
+    }
+
+    .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Daha şeffaf gradyan */
+    z-index: 2; /* Gradient, img'nin üzerinde olacak */
+    transition: opacity 0.3s ease;
+    }
+
+    /* Overlay */
+    .carousel-item .item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Şeffaflık arttı, daha açık oldu */
+    transition: opacity 0.3s ease; /* Hover sırasında şeffaflaşacak */
+    z-index: 2; /* Overlay en üstte görünecek */
+    }
+
+    /* Hover sırasında carousel item'i büyür ve overlay kaybolur */
+    .carousel-item:hover .item-overlay {
+    opacity: 0; /* Hover'da overlay şeffaflaşır */
+    }
+
+    .carousel-item:hover {
+    z-index: 3; /* Hover edilen item diğerlerinin üstünde görünür */
+    }
+
+    .carousel-item:hover img {
+    transform: scale(1.1); /* Hover sırasında resim zoom yapılır */
+    }
+
+    .carousel-title,
+    .carousel-subtitle {
+    position: absolute;
+    left: 50%;
+    font-family: 'Roboto', sans-serif !important;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    z-index: 3;
+    opacity: 0; /* Başlangıçta görünmez */
+    transition: opacity 0.3s ease;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Gölge ekleniyor */
+    line-height: 1.2;
+
+    }
+
+    .carousel-title {
+    top: 20%;
+    font-size: 28px;
+    }
+
+    .carousel-subtitle {
+    margin-top: 5px;
+    font-size: 24px;
+    text-align: center;
+    }
+
+    .carousel-item:hover .carousel-title,
+    .carousel-item:hover .carousel-subtitle {
+    opacity: 1;
+    }
+
+    /* Overlay */
+    .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    display: none;
+    }
+
+    .carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+    }
+
+    .carousel-prev {
+    left: 5px;
+    }
+
+    .carousel-next {
+    right: 5px;
+    }
+
+    /* Hover sırasında carousel gösterilecek */
+    .side-menu ul li:hover .carousel {
+    display: block;
+    z-index: 10001;
+    }
+
+    /* Side-menu hover sırasında overlay aktif olacak */
+    .side-menu:hover .overlay {
+    display: block;
+    }
+
+    /* Mouse side-menu'den ayrıldığında overlay kapanacak */
+    .side-menu ul li:hover ~ .overlay {
+    display: none;
+    }
+    
+    
+    .custom-container {
+        display: flex;
+        gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
+        margin: 50px;
+        align-items: flex-start;
+        padding-left: 350px;
+    }
+
+    .custom-red-box {
+        width: 260px;
+        height: 520px;
+        background-color: red;
+    }
+
+    .custom-green-box {
+        flex-grow: 1;
+        background-color: transparent; /* Yeşil renk */
+        padding: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+    }
+
+    .custom-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Satıra 4 kart sığacak */
+        gap: 20px; /* Kartlar arasındaki boşluk */
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .custom-card {
+        position: relative;
+        display: block;
+        border-radius: calc(var(--curve) * 1px);
+        overflow: hidden;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        background-color: #b44454;
+    }
+
+    .custom-card:hover {
+        transform: scale(1.05); /* Hover büyütme efekti */
+    }
+
+    .custom-card__image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .custom-card__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        border-radius: calc(var(--curve) * 1px);
+        background-color: #b44454;
+        transform: translateY(100%);
+        transition: .2s ease-in-out;
+    }
+
+    .custom-card:hover .custom-card__overlay {
+        transform: translateY(0);
+    }
+
+    .custom-card__header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        padding: 1em;
+        background-color: #b44454;
+        border-radius: calc(var(--curve) * 1px) 0 0 0;
+        text-align: center;
+    }
+
+    .custom-card__thumb {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .custom-card__title {
+        font-size: 1.5em;
+        margin: 0;
+        color: white;
+    }
+
+    .custom-card__description {
+        padding: 0 1.5em 1.5em;
+        margin: 0;
+        color: white;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        /* -webkit-line-clamp: 3; */
+        overflow: hidden;
+    }
+
+    .custom-separator {
+        display: flex;
+        align-items: center;
+        margin-top: 70px;
+        margin-bottom: 20px;
+        position: relative;
+        width: 100%;
+    }
+
+    .custom-separator h2 {
+        font-size: 24px;
+        color: #b44454;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        margin-right: 10px;
+        margin-left: 0; /* Sola hizalamak için */
+        white-space: nowrap;
+    }
+
+    .custom-separator::after {
+        content: "";
+        flex-grow: 1;
+        height: 2px;
+        background-color: #b44454;
+        margin-left: 10px; /* Başlıkla çizgi arasında boşluk */
+    }
+
+
+    @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+    .arrow {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: inline-block;
+    font-size: 18px;
+    color: #ffffff; /* Beyaz renk */
+    background-color: #949599; /* Gri arka plan */
+    text-align: center;
+    width: 120px;
+    height: 60px;
+    line-height: 60px;
+    border: none; /* Sınır yok */
+    overflow: hidden;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 1000;
+    transition: width 0.5s ease-in-out, margin 0.5s ease-in-out, border-radius 0.25s ease-in-out, color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    }
+
+    .arrow:hover, .arrow.auto {
+    width: 60px;
+    margin-left: 0;
+    border-radius: 40px;
+    background-color: #b44454; /* Hover sırasında kırmızı arka plan */
+    color: rgba(255, 255, 255, 0); /* Hover sırasında metin şeffaf */
+    transition: width 0.5s ease-in-out, margin 0.5s ease-in-out, border-radius 0.25s ease-in-out, color 0.25s ease-in-out 0.25s, background-color 0.25s ease-in-out;
+    }
+
+    .arrow::before, .arrow::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-top: 5px solid #ffffff;
+    border-left: 5px solid #ffffff;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out;
+    }
+
+    .arrow::before {
+    top: 20px;
+    transform: translate(-50%, 50px) rotate(45deg); /* Başlangıçta görünmeyecek şekilde konumlandır */
+    }
+
+    .arrow::after {
+    top: 40px;
+    transform: translate(-50%, 50px) rotate(45deg); /* Başlangıçta görünmeyecek şekilde konumlandır */
+    }
+
+    .arrow:hover::before, .arrow.auto::before {
+    animation: tipUp 1s cubic-bezier(0.0, 0.6, 1.0, 0.4) infinite 0.5s;
+    }
+
+    .arrow:hover::after, .arrow.auto::after {
+    animation: tipUp 1s cubic-bezier(0.0, 0.6, 1.0, 0.4) infinite 1s;
+    }
+
+    @keyframes tipUp {
+    0% { transform: translate(-50%, 50px) rotate(45deg); }
+    100% { transform: translate(-50%, -70px) rotate(45deg); }
+    }

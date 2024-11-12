@@ -61,8 +61,9 @@
                 <section id="product_detail" class="container py-4 oe_website_sale">
                     <div class="row" id="product_detail_main">
 
-                        <t t-call="vita_web.custom_sidebar_menu"/>
-
+                       <div id="side_menu_slide" class="d-none d-md-block">
+                            <t t-call="vita_web.custom_sidebar_menu"/>
+                       </div>
                         <!-- İçerik Alanı -->
                         <div class="col-md-9 offset-md-3 custom-content-area">
 
@@ -98,6 +99,7 @@
 
                             <!-- Red Cards Alanı -->
                             <t t-call="vita_web.red_cards"/>
+                            <t t-call="vita_web.product_faq_template"/>
 
 
 
@@ -107,11 +109,18 @@
                                 <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.accordion_content_html"/>
                             </t>
 
-<!--                                 &lt;!&ndash; Ürün Özgün İçerik Alanı (Drag-and-Drop) &ndash;&gt;-->
-<!--                                <t t-if="product">-->
-<!--                                    <t t-set='editor_msg'>Diğer Ürünler eklemek için  "<t t-esc='product.name'/>" category.</t>-->
-<!--                                    <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.related_products_html"/>-->
-<!--                                </t>-->
+                             <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
+                            <t t-if="product">
+                                <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>" category.</t>
+                                <div class="mb16"  id="product_header" t-att-data-editor-message="editor_msg" t-field="product.related_products_html"/>
+                            </t>
+
+
+                            <!--                                 &lt;!&ndash; Ürün Özgün İçerik Alanı (Drag-and-Drop) &ndash;&gt;-->
+                            <!--                                <t t-if="product">-->
+                            <!--                                    <t t-set='editor_msg'>Diğer Ürünler eklemek için  "<t t-esc='product.name'/>" category.</t>-->
+                            <!--                                    <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.related_products_html"/>-->
+                            <!--                                </t>-->
 
                             <t t-call="vita_web.diger_hizmetler"/>
 
@@ -131,6 +140,7 @@
                 </section>
 
             </div>
+
         </xpath>
     </template>
 

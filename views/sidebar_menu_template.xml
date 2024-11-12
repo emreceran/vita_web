@@ -1,632 +1,298 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="custom_sidebar_menu" name="Custom Sidebar Menu">
-
-        <style>
-
-
-
-            /* Side Menu */
-            .side-menu {
-            width: 300px;
-            padding: 20px;
-            position: fixed;
-            top: 10vh;
-            z-index: 10;
-            overflow: visible;
-            align-self: start;
-            transition: transform 0.3s ease, width 0.3s ease; /* Geçiş animasyonu */
-            }
-
-            /* Küçük ekranlarda side menüyü ölçeklendirme */
-            <!--    @media (max-height: 800px) {-->
-            <!--        .side-menu {-->
-            <!--            transform: scale(0.8); /* %90 boyutuna küçült */-->
-
-
-            <!--        }-->
-            <!--    }-->
-
-            @media (max-height: 600px) {
-            .side-menu {
-            transform: scale(0.8); /* %80 boyutuna küçült */
-
-
-            }
-            }
-
-            @media (max-height: 400px) {
-            .side-menu {
-            transform: scale(0.6); /* %70 boyutuna küçült */
-
-            }
-            }
-
-            /* Footer ile çakışmayı önlemek için belirli bir alt sınır */
-            .footer-boundary {
-            position: relative;
-            }
-
-
-
-            .side-menu ul {
-            list-style-type: none;
-            padding: 0;
-            }
-
-            .side-menu ul li {
-            margin-bottom: 5px;
-            position: relative;
-            z-index: 10001;
-            }
-
-            .side-menu ul li a {
-            text-decoration: none;
-            font-size: 20px;
-            color: #333;
-            padding: 10px;
-            display: block;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            transition: background-color 0.3s, color 0.3s;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            border-radius: 50px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 10001;
-            }
-
-            .side-menu ul li a:hover {
-            background-color: #b44454;
-            color: #fff;
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-            border: 1px solid #b44454;
-            }
-
-            .box {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            }
-
-            .box-img img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-top-left-radius: 25px;
-            border-bottom-left-radius: 25px;
-            }
-
-            .box-text {
-            margin-left: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            }
-
-            .box-text small {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-            }
-
-            .box-text span {
-            font-size: 16px;
-            color: #b44454;
-            line-height: 1.2;
-            }
-
-            /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
-            .side-menu ul li a:hover .box-text span,
-            .side-menu ul li a:hover .box-text small {
-            color: #fff; /* Hover sırasında tüm yazılar beyaz */
-            }
-
-            /* Carousel */
-            .carousel {
-            display: none;
-            position: absolute;
-            top: 50%; /* Ortalamak için %50 */
-            left: 100%;
-            width: 760px; /* 190px * 4 = 760px (4 item göstermek için) */
-            height: 220px;
-            background-color: transparent;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10001;
-            overflow: hidden;
-            transform: translateY(-50%); /* Carousel'i dikeyde ortalamak için */
-            }
-
-            .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease;
-            width: max-content;
-            }
-
-            /* Carousel Item */
-            .carousel-item {
-            position: relative;
-            flex: 0 0 190px; /* Genişlik 190px */
-            height: 220px; /* Yükseklik 220px */
-            margin: 0;
-            padding: 0;
-            display: block;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Overlay'in taşmaması için */
-            transition: transform 0.3s ease;
-            }
-
-            .carousel-item img {
-            width: 190px; /* Genişlik 190px */
-            height: 220px; /* Yükseklik 220px */
-            object-fit: cover;
-            transition: transform 0.3s ease; /* Hover sırasında zoom efekti için */
-            }
-
-            .carousel-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Daha şeffaf gradyan */
-            z-index: 2; /* Gradient, img'nin üzerinde olacak */
-            transition: opacity 0.3s ease;
-            }
-
-            /* Overlay */
-            .carousel-item .item-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.2); /* Şeffaflık arttı, daha açık oldu */
-            transition: opacity 0.3s ease; /* Hover sırasında şeffaflaşacak */
-            z-index: 2; /* Overlay en üstte görünecek */
-            }
-
-            /* Hover sırasında carousel item'i büyür ve overlay kaybolur */
-            .carousel-item:hover .item-overlay {
-            opacity: 0; /* Hover'da overlay şeffaflaşır */
-            }
-
-            .carousel-item:hover {
-            z-index: 3; /* Hover edilen item diğerlerinin üstünde görünür */
-            }
-
-            .carousel-item:hover img {
-            transform: scale(1.1); /* Hover sırasında resim zoom yapılır */
-            }
-
-            .carousel-title,
-            .carousel-subtitle {
-            position: absolute;
-            left: 50%;
-            font-family: 'Roboto', sans-serif !important;
-            transform: translateX(-50%);
-            color: white;
-            font-weight: bold;
-            z-index: 3;
-            opacity: 0; /* Başlangıçta görünmez */
-            transition: opacity 0.3s ease;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Gölge ekleniyor */
-            line-height: 1.2;
-
-            }
-
-            .carousel-title {
-            top: 20%;
-            font-size: 28px;
-            }
-
-            .carousel-subtitle {
-            margin-top: 5px;
-            font-size: 24px;
-            text-align: center;
-            }
-
-            .carousel-item:hover .carousel-title,
-            .carousel-item:hover .carousel-subtitle {
-            opacity: 1;
-            }
-
-            /* Overlay */
-            .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            display: none;
-            }
-
-            .carousel-prev, .carousel-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 100;
-            }
-
-            .carousel-prev {
-            left: 5px;
-            }
-
-            .carousel-next {
-            right: 5px;
-            }
-
-            /* Hover sırasında carousel gösterilecek */
-            .side-menu ul li:hover .carousel {
-            display: block;
-            z-index: 10001;
-            }
-
-            /* Side-menu hover sırasında overlay aktif olacak */
-            .side-menu:hover .overlay {
-            display: block;
-            }
-
-            /* Mouse side-menu'den ayrıldığında overlay kapanacak */
-            .side-menu ul li:hover ~ .overlay {
-            display: none;
-            }
-
-
-
-
-            }
-        </style>
-
-        <div class="side-menu mobillisil">
-            <ul>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/672-7149a51b/tower-crane.webp" alt="Placeholder Image" loading="lazy"/>
-                            </div>
-                            <div class="box-text">
-                                <span>MAKİNE GRUBU</span>
-                                <small>Periyodik Kontrolleri</small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/684-f8093530/Kald%C4%B1rma%20Ekipmanlar%C4%B1%20%284%29.webp" alt="Image 1" loading="lazy" />
-                                <div class="carousel-title">Kaldırma Ekipmanları</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/687-c0e90f28/bas%C4%B1n%C3%A7l%C4%B1.png" alt="Image 2" loading="lazy" />
-                                <div class="carousel-title">Basınçlı Kaplar</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/690-cbf6e543/makine%20tezgahlar%C4%B1.png" alt="Image 3" loading="lazy" />
-                                <div class="carousel-title">Makine Tezgahları</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/685-852126de/i%C5%9F%20makineleri.png" alt="Image 4" loading="lazy" />
-                                <div class="carousel-title">İş Makineleri</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/686-1c27d604/raf%20sistemleri.png" alt="Image 5" loading="lazy" />
-                                <div class="carousel-title">Raf Sistemleri</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/688-301080de/end%C3%BCstriyel%20kap%C4%B1lar.png" alt="Image 5" loading="lazy" />
-                                <div class="carousel-title">Endüstriyel Kapılar</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/689-973b0c30/kanca%20alt%C4%B1.png" alt="Image 5" loading="lazy" />
-                                <div class="carousel-title">Kanca Altı Ekipmanları</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/673-2e95544b/voltmeter.webp" alt="Placeholder Image" loading="lazy" />
-                            </div>
-                            <div class="box-text">
-                                <span>ELEKTRİK GRUBU</span>
-                                <small>Periyodik Kontrolleri</small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/922" alt="Image 1" loading="lazy"/>
-                                <div class="carousel-title">Topraklama Ölçümleri</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy"/>
-                                <div class="carousel-title">Elektrik İç Tesisat Uygunluk</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/920" alt="Image 3" loading="lazy"/>
-                                <div class="carousel-title">Paratoner Yıldırımdan Korunma</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/911" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Kaçak Artık Akım Rolesi</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/909" alt="Image 5" loading="lazy"/>
-                                <div class="carousel-title">Pano Fonksiyon</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/914" alt="Image 5" loading="lazy"/>
-                                <div class="carousel-title">Pano Görsel</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/910" alt="Image 5" loading="lazy"/>
-                                <div class="carousel-title">Pano Termografi</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/913" alt="Image 5" loading="lazy"/>
-                                <div class="carousel-title">Jeneratör</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/908" alt="Image 5" loading="lazy"/>
-                                <div class="carousel-title">Katodik Koruma Ölçümleri</div>
-                                <div class="item-overlay"></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/671-9aa36127/plumbing.webp" alt="Placeholder Image" loading="lazy"/>
-                            </div>
-                            <div class="box-text">
-                                <span>TESİSAT GRUBU</span>
-                                <small>Periyodik Kontrolleri</small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy"/>
-                                <div class="carousel-title">Yangın Tesisatı</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 2" loading="lazy"/>
-                                <div class="carousel-title">Havalandırma Tesisatı</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy"/>
-                                <div class="carousel-title">Algılama Alarm Sistemleri</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Paratoner Tesisatı</div>
-                                <div class="item-overlay"></div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </li>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/669-2124dc59/laboratory.webp" alt="Placeholder Image" loading="lazy"/>
-                            </div>
-                            <div class="box-text">
-                                <span>İŞ HİJYENİ</span>
-                                <small>Laboratuvarı</small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy"/>
-                                <div class="carousel-title">Aydınlatma Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 2" loading="lazy"/>
-                                <div class="carousel-title">Kişisel Gürültü Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy"/>
-                                <div class="carousel-title">Ortam Gürültü Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Termal Konfor Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">El Kol Tüm Vücut Titreşim Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Elektromanyetik Alan Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Toplam Toz Konsantrasyon Tayini</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Solunabilir Toz Konsantrasyon Tayini</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Gaz ve Buhar Konsantrasyon Tayini</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Uçucu Organik Bileşik (VOC) Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Ağır Metal Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Kişisel Gaz Ölçümü</div>
-                                <div class="item-overlay"></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/668-b8a53d21/shield.webp" alt="Placeholder Image" loading="lazy"/>
-                            </div>
-                            <div class="box-text">
-                                <span>PATLAMADAN</span>
-                                <small>Korunma</small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy"/>
-                                <div class="carousel-title"> Patlamadan Korunma Dökümantasyonu</div>
-                                <div class="item-overlay"></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/670-61bac291/construction.webp" alt="Placeholder Image" loading="lazy"/>
-                            </div>
-                            <div class="box-text">
-                                <span>STATİK ANALİZ</span>
-                                <small></small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy"/>
-                                <div class="carousel-title">Statik Analiz</div>
-                                <div class="item-overlay"></div>
-                            </div>
-
-                        </div></div></li>
-                <li>
-                    <a href="#section1">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="https://odoo-184727-0.cloudclusters.net/web/image/661-2b0d5fc9/inspecting.webp" alt="Placeholder Image" loading="lazy"/>
-                            </div>
-                            <div class="box-text">
-                                <span>TESİSAT PROJE</span>
-                                <small>DEĞERLENDİRME</small>
-                            </div>
-                        </div>
-                    </a>
-
-
-                    <div class="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 1" loading="lazy"/>
-                                <div class="carousel-title">Yangın Tesisatı Proje Değerlendirme</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 2" loading="lazy"/>
-                                <div class="carousel-title">Havalandırma Proje Değerlendirme</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy"/>
-                                <div class="carousel-title">Algılama Alarm Sistemleri Proje Değerlendirme</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 3" loading="lazy"/>
-                                <div class="carousel-title">Elektrik Tesisatı Proje Değerlendirme</div>
-                                <div class="item-overlay"></div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://belfasthills.org/wp-content/uploads/2014/02/Sample-image-2-150x150.jpg" alt="Image 4" loading="lazy"/>
-                                <div class="carousel-title">Paratoner Tesisatı Proje Değerlendirme</div>
-                                <div class="item-overlay"></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </template>
-</odoo>
+ <template id="custom_sidebar_menu" name="Custom Sidebar Menu">
+  <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/side_bar2.css"/>
+  <span class="arrow">başa dön</span>
+  <div class="custom-container">
+    <div id="side_menu" class="side-menu mobillisil">
+      <ul>
+        <li>
+          <a href="#section1">
+            <div class="box">
+              <div class="box-img">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/672-7149a51b/tower-crane.webp" alt="Placeholder Image" loading="lazy"/>
+              </div>
+              <div class="box-text">
+                <span>MAKİNE GRUBU</span>
+                <small>Periyodik Kontrolleri</small>
+              </div>
+            </div>
+          </a>
+
+
+          <div class="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/684-f8093530/Kald%C4%B1rma%20Ekipmanlar%C4%B1%20%284%29.webp" alt="Image 1" loading="lazy"/>
+                <div class="carousel-title">Kaldırma Ekipmanları</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/687-c0e90f28/bas%C4%B1n%C3%A7l%C4%B1.png" alt="Image 2" loading="lazy"/>
+                <div class="carousel-title">Basınçlı Kaplar</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/690-cbf6e543/makine%20tezgahlar%C4%B1.png" alt="Image 3" loading="lazy"/>
+                <div class="carousel-title">Makine Tezgahları</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/685-852126de/i%C5%9F%20makineleri.png" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title">İş Makineleri</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/686-1c27d604/raf%20sistemleri.png" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Raf Sistemleri</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/688-301080de/end%C3%BCstriyel%20kap%C4%B1lar.png" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Endüstriyel Kapılar</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/689-973b0c30/kanca%20alt%C4%B1.png" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Kanca Altı Ekipmanları</div>
+                <div class="item-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#section1">
+            <div class="box">
+              <div class="box-img">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/673-2e95544b/voltmeter.webp" alt="Placeholder Image" loading="lazy"/>
+              </div>
+              <div class="box-text">
+                <span>ELEKTRİK GRUBU</span>
+                <small>Periyodik Kontrolleri</small>
+              </div>
+            </div>
+          </a>
+
+
+          <div class="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/922" alt="Image 1" loading="lazy"/>
+                <div class="carousel-title">Topraklama Ölçümleri</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy"/>
+                <div class="carousel-title">Elektrik İç Tesisat Uygunluk</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/920" alt="Image 3" loading="lazy"/>
+                <div class="carousel-title">Paratoner Yıldırımdan Korunma</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/911" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title">Kaçak Artık Akım Rolesi</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/909" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Pano Fonksiyon</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/914" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Pano Görsel</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/910" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Pano Termografi</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/913" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Jeneratör</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/908" alt="Image 5" loading="lazy"/>
+                <div class="carousel-title">Katodik Koruma Ölçümleri</div>
+                <div class="item-overlay"></div>
+              </div>
+
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#section1">
+            <div class="box">
+              <div class="box-img">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/671-9aa36127/plumbing.webp" alt="Placeholder Image" loading="lazy"/>
+              </div>
+              <div class="box-text">
+                <span>TESİSAT GRUBU</span>
+                <small>Periyodik Kontrolleri</small>
+              </div>
+            </div>
+          </a>
+
+
+          <div class="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2422" alt="Image 1" loading="lazy"/>
+                <div class="carousel-title">Yangın Tesisatı</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2411" alt="Image 2" loading="lazy"/>
+                <div class="carousel-title">Havalandırma Tesisatı</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2407" alt="Image 3" loading="lazy"/>
+                <div class="carousel-title">Algılama Alarm Sistemleri</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2432" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title">Paratoner Tesisatı</div>
+                <div class="item-overlay"></div>
+              </div>
+
+            </div>
+          </div>
+
+        </li>
+        <li>
+          <a href="#section1">
+            <div class="box">
+              <div class="box-img">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/669-2124dc59/laboratory.webp" alt="Placeholder Image" loading="lazy"/>
+              </div>
+              <div class="box-text">
+                <span>İŞ HİJYENİ</span>
+                <small>Laboratuvarı</small>
+              </div>
+            </div>
+          </a>
+
+
+          <div class="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy"/>
+                <div class="carousel-title" style="top: 30%;">Aydınlatma Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2417" alt="Image 2" loading="lazy"/>
+                <div class="carousel-title">Kişisel Gürültü Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2414" alt="Image 3" loading="lazy"/>
+                <div class="carousel-title">Ortam Gürültü Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title">Termal Konfor Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2421" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="font-size: 26px; top:20%;">El Kol Tüm Vücut Titreşim Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2415" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="font-size: 22px; top: 40%;">Elektromanyetik Alan Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2410" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="top: 15%; font-size: 24px;">Toplam Toz Numune Alma ve Analizi</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2419" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="top: 10%;">Solunabilir Toz Numune Alma ve Analizi</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2402" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="top: 30%; font-size: 24px;">Gaz ve Buhar Konsantrasyon Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2418" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="top: 5%; font-size: 24px;">Uçucu Organik Bileşik (VOC) Numune Alma ve Analizi</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2408" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title" style="top: 10%;">Ağır Metal Numune Alma ve Analizi</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2413" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title">Kişisel Gaz Maruziyeti Ölçümü</div>
+                <div class="item-overlay"></div>
+              </div>
+
+            </div>
+          </div>
+        </li>  
+        <li>
+          <a href="#section1">
+            <div class="box">
+              <div class="box-img">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/669-2124dc59/laboratory.webp" alt="Placeholder Image" loading="lazy"/>
+              </div>
+              <div class="box-text">
+                <span>MÜHENDİSLİK</span>
+                <small>HİZMETLERİ</small>
+              </div>
+            </div>
+          </a>
+
+
+          <div class="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy"/>
+                <div class="carousel-title" style="top: 30%;">Patlamadan Korunma</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2417" alt="Image 2" loading="lazy"/>
+                <div class="carousel-title">Statik Analiz</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2414" alt="Image 3" loading="lazy"/>
+                <div class="carousel-title">Tesisat Proje</div>
+                <div class="item-overlay"></div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy"/>
+                <div class="carousel-title">Gelecek</div>
+                <div class="item-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="overlay"></div>
+  </div>
+
+  <script src="/vita_web/static/src/js/side_bar.js"></script>
+  <script src="/vita_web/static/src/js/side_slide.js"></script>
+
+  </template>
+</odoo> 
