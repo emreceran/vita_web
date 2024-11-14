@@ -100,6 +100,7 @@
                             <!-- Red Cards Alanı -->
                             <t t-call="vita_web.red_cards"/>
                             <t t-call="vita_web.product_faq_template"/>
+                            <t t-call="vita_web.top_footer_template"/>
 
 
 
@@ -132,8 +133,9 @@
                             <!--                                &lt;!&ndash; Diğer Hizmetler için içerik buraya eklenecek &ndash;&gt;-->
                             <!--                            </div>-->
 
-                            <div id="o_product_terms_and_share" class="d-flex justify-content-between flex-column flex-md-row align-items-md-end mb-3">
-                            </div>
+                            <div id="o_product_terms_and_share" class="d-flex justify-content-between flex-column flex-md-row align-items-md-end mb-3"></div>
+                         
+                            
                         </div>
 
                     </div>

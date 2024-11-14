@@ -33,6 +33,7 @@ Long description of module's purpose
         'views/product_list.xml',
         'views/products_item.xml',
         'views/sorular.xml',
+        'views/top_footer.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

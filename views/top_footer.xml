@@ -1,0 +1,67 @@
+ 
+ <odoo>
+    <template id="top_footer_template" name="TOP FOOTER Template">
+        <div class="bg-dark p-3">
+            <div class="container">
+                <div class="row text-center">
+                
+                    <!-- TÜBİTAK -->
+                    <div class="col bg-info ">
+                        <a href="https://www.tubitak.gov.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-flask fa-2x mb-2"></i>
+                            <h6 class="text-dark">TÜBİTAK</h6>
+                        </a>
+                    </div>
+                    
+                    <!-- KOSGEB -->
+                    <div class="col bg-primary ">
+                        <a href="https://www.kosgeb.gov.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-industry fa-2x mb-2"></i>
+                            <h6 class="text-dark">KOSGEB</h6>
+                        </a>
+                    </div>
+                    
+                    <!-- TÜBA -->
+                    <div class="col bg-warning ">
+                        <a href="https://www.tuba.gov.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-book fa-2x mb-2"></i>
+                            <h6 class="text-dark">TÜBA</h6>
+                        </a>
+                    </div>
+                    
+                    <!-- ASELSAN -->
+                    <div class="col">
+                        <a href="https://www.aselsan.com.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-shield-alt fa-2x mb-2"></i>
+                            <h6 class="text-dark">ASELSAN</h6>
+                        </a>
+                    </div>
+                    
+                    <!-- TAI -->
+                    <div class="col bg-success">
+                        <a href="https://www.tai.com.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-plane fa-2x mb-2"></i>
+                            <h6 class="text-dark">TAI</h6>
+                        </a>
+                    </div>
+                    
+                    <!-- MEB (EBA) -->
+                    <div class="col bg-danger ">
+                        <a href="http://www.meb.gov.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-chalkboard-teacher fa-2x mb-2"></i>
+                            <h6 class="text-dark">MEB (EBA)</h6>
+                        </a>
+                    </div>
+                    
+                    <!-- HAVELSAN -->
+                    <div class="col bg-dark ">
+                        <a href="https://www.havelsan.com.tr/" target="_blank" class="text-decoration-none">
+                            <i class="fas fa-laptop-code fa-2x mb-2"></i>
+                            <h6 class="text-dark">HAVELSAN</h6>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
