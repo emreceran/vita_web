@@ -100,7 +100,7 @@
                             <!-- Red Cards Alanı -->
                             <t t-call="vita_web.red_cards"/>
                             <t t-call="vita_web.product_faq_template"/>
-                            <t t-call="vita_web.top_footer_template"/>
+                            <!-- <t t-call="vita_web.top_footer_template"/> -->
 
 
 

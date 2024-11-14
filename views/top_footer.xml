@@ -1,67 +1,58 @@
  
  <odoo>
-    <template id="top_footer_template" name="TOP FOOTER Template">
-        <div class="bg-dark p-3">
-            <div class="container">
-                <div class="row text-center">
-                
-                    <!-- TÜBİTAK -->
-                    <div class="col bg-info ">
-                        <a href="https://www.tubitak.gov.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-flask fa-2x mb-2"></i>
-                            <h6 class="text-dark">TÜBİTAK</h6>
-                        </a>
-                    </div>
-                    
-                    <!-- KOSGEB -->
-                    <div class="col bg-primary ">
-                        <a href="https://www.kosgeb.gov.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-industry fa-2x mb-2"></i>
-                            <h6 class="text-dark">KOSGEB</h6>
-                        </a>
-                    </div>
-                    
-                    <!-- TÜBA -->
-                    <div class="col bg-warning ">
-                        <a href="https://www.tuba.gov.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-book fa-2x mb-2"></i>
-                            <h6 class="text-dark">TÜBA</h6>
-                        </a>
-                    </div>
-                    
-                    <!-- ASELSAN -->
-                    <div class="col">
-                        <a href="https://www.aselsan.com.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-shield-alt fa-2x mb-2"></i>
-                            <h6 class="text-dark">ASELSAN</h6>
-                        </a>
-                    </div>
-                    
-                    <!-- TAI -->
-                    <div class="col bg-success">
-                        <a href="https://www.tai.com.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-plane fa-2x mb-2"></i>
-                            <h6 class="text-dark">TAI</h6>
-                        </a>
-                    </div>
-                    
-                    <!-- MEB (EBA) -->
-                    <div class="col bg-danger ">
-                        <a href="http://www.meb.gov.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-chalkboard-teacher fa-2x mb-2"></i>
-                            <h6 class="text-dark">MEB (EBA)</h6>
-                        </a>
-                    </div>
-                    
-                    <!-- HAVELSAN -->
-                    <div class="col bg-dark ">
-                        <a href="https://www.havelsan.com.tr/" target="_blank" class="text-decoration-none">
-                            <i class="fas fa-laptop-code fa-2x mb-2"></i>
-                            <h6 class="text-dark">HAVELSAN</h6>
-                        </a>
+    <template id="top_footer_template" name="TOP FOOTER Template" inherit_id="website.layout">
+        <xpath expr="//footer" position="before">
+            <div class="bg-white border border-3 border-light">
+                <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col d-flex justify-content-center align-items-center">
+                            <span class="p-3">
+                                <a href="https://www.iso.org/home.html" target="_blank" class="text-decoration-none ">
+                                    <span class="m-0 text-muted">
+                                      <img src="/vita_web/static/src/icons/iso.jpeg" alt="iso" style="height:48px;"/>
+                                    </span>
+                                </a>
+                            </span>
+                            <span class="p-3">
+                                <a href="https://commission.europa.eu/index_en" target="_blank" class="text-decoration-none ">
+                                    <span class="m-0 text-muted">
+                                      <img src="/vita_web/static/src/icons/europan.png" alt="europan" style="height:48px;"/>
+                                    </span>
+                                </a>
+                            </span>
+                            <span class="p-3">
+                                <a href="https://www.csgb.gov.tr/" target="_blank" class="text-decoration-none ">
+                                    <span class="m-0 text-muted">
+                                      <img src="/vita_web/static/src/icons/çsgb.jpg" alt="ÇSGB" style="height:48px;"/>
+                                    </span>
+                                </a>
+                            </span>
+                            <span class="p-3">
+                                <a href="https://www.turkak.org.tr/" target="_blank" class="text-decoration-none ">
+                                    <span class="m-0 text-muted">
+                                      <img src="/vita_web/static/src/icons/türkak.png" alt="turkak" style="height:48px;;"/>
+                                    </span>
+                                </a>
+                            </span>
+                            <span class="p-3">
+                                <a href="https://www.tubitak.gov.tr/" target="_blank" class="text-decoration-none ">
+                                    <span class="m-0 text-muted">
+                                      <img src="/vita_web/static/src/icons/tübitak.jpeg" alt="tübitak" style="height:48px;;"/>
+                                    </span>
+                                </a>
+                            </span>
+                            <span class="p-3">
+                                <a href="https://www.kosgeb.gov.tr/" target="_blank" class="text-decoration-none ">
+                                    <span class="m-0 text-muted">
+                                      <img src="/vita_web/static/src/icons/kosgeb.jpeg" alt="kosgeb" style="height:48px;"/>
+                                    </span>
+                                </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
+
             </div>
-        </div>
+        </xpath>
     </template>
 </odoo>
