@@ -3,8 +3,8 @@
  <template id="custom_sidebar_menu" name="Custom Sidebar Menu">
   <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/side_bar2.css"/>
   <span class="arrow">başa dön</span>
-  <div class="custom-container">
-    <div id="side_menu" class="side-menu mobillisil">
+  <div class="bg-danger custom-container">
+    <div id="side_menu" class="bg-dark side-menu mobillisil">
       <ul>
         <li>
           <a href="#section1">

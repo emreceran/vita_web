@@ -100,15 +100,8 @@
                             <!-- Red Cards Alanı -->
                             <t t-call="vita_web.red_cards"/>
                             <t t-call="vita_web.product_faq_template"/>
-                            <!-- <t t-call="vita_web.top_footer_template"/> -->
 
-
-
-                            <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
-                            <t t-if="product">
-                                <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>" category.</t>
-                                <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.accordion_content_html"/>
-                            </t>
+                            
 
                              <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
                             <t t-if="product">
