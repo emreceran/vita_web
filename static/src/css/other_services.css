@@ -1,0 +1,78 @@
+/* Hizmetler Başlık Stili */
+.hizmetler-baslik {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b44454;
+    padding: 10px 20px;
+    margin: 20px 0 0 0; /* Üstten daha fazla boşluk ve alttan daraltılmış boşluk */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 960px;
+}
+
+/* Hizmetler Konteyner ve Hizmet Kutusu */
+.hizmetler-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Varsayılan olarak 3 sütun */
+    gap: 15px;
+    width: 100%;
+    max-width: 960px;
+    padding-top: 10px;
+    background-color: #fff;
+    border: #b44454 solid 3px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.hizmet-kutusu {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    text-decoration: none; /* Link alt çizgisi kaldırıldı */
+}
+
+.hizmet-kutusu:hover {
+    transform: scale(1.05); /* Hover sırasında biraz büyüme efekti */
+}
+
+.hizmet-kutusu img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.hizmet-baslik {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px 0; /* Başlık ortalandı ve alt boşluk azaltıldı */
+    color: #333;
+    text-align: center;
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 1024px) {
+    .hizmetler-container {
+        grid-template-columns: repeat(3, 1fr); /* Tabletler için 3 sütun */
+    }
+}
+
+@media (max-width: 768px) {
+    .hizmetler-container {
+        grid-template-columns: repeat(2, 1fr); /* Küçük ekranlar için 2 sütun */
+    }
+}
+
+@media (max-width: 480px) {
+    .hizmetler-container {
+        grid-template-columns: 1fr; /* Mobil ekranlar için 1 sütun */
+    }
+
+    .hizmet-baslik {
+        font-size: 14px;
+    }
+}

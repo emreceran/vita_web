@@ -1,0 +1,17 @@
+<odoo> 
+    <template id="product_categories" name="Product Categories">
+        <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/other_services.css"/>  
+        <!-- Başlık -->
+        <div class="hizmetler-baslik">Diğer Hizmetlerimiz</div>
+
+        <!-- Hizmetler Konteyneri -->
+        <div class="hizmetler-container">
+            <t t-foreach="request.env['product.template'].search([('public_categ_ids', 'in', product.public_categ_ids.ids), ('id', '!=', product.id)])" t-as="related_product">
+                <a t-att-href="related_product.website_url" class="hizmet-kutusu">
+                    <img t-att-src="website.image_url(related_product, 'custom_image')" alt="Hizmet Resmi" loading="lazy" />
+                    <div class="hizmet-baslik"><t t-esc="related_product.name" /></div>
+                </a>
+            </t>
+        </div>
+    </template>
+</odoo>

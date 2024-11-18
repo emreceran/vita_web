@@ -7,18 +7,10 @@
     padding: 20px;
     position: fixed;
     z-index: 1000;
-    top: 320px;
-    left: 80px;
+    left: 100px;
     }
    
-    /* Menü footer'a çarptığında "absolute" pozisyona geçmesi için bir CSS sınıfı */
-    .side-absolute {
-        border: 3px solid blue;
-        width: 300px;
-        padding: 20px;
-        position: absolute;
-        z-index: 1000;
-    }
+  
 
     .side-menu ul {
     list-style-type: none;

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_blog_sidebar_left" inherit_id="website_blog.blog_post_short">
+        <!-- Blog layout'ta sidebar'ı sola taşıma -->
+        <xpath expr="//div[contains(@class, 'row justify-content-between')]" position="replace">
+            <div class="row justify-content-between">
+                <!-- Sidebar sola taşınıyor -->
+                <div id="o_wblog_sidebar" class="col-lg-3">
+                    <t t-call="website_blog.sidebar_blog_index"/>
+                </div>
+                <!-- Blog içerik sağda kalıyor -->
+                <div id="o_wblog_posts_loop_container" class="col-lg-9">
+                    <t t-call="website_blog.posts_loop"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -20,20 +20,21 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website_sale', 'vita_data'],
+    'depends': ['base', 'website_sale', 'vita_data', 'website_blog'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/sidebar_menu_template.xml',
+        'views/side.xml',
         'views/red_cards.xml',
-        'views/diger_hizmetler.xml',
         'views/product_list.xml',
         'views/products_item.xml',
         'views/sorular.xml',
+        'views/product_categories.xml',
         'views/top_footer.xml',
+        # 'views/custom_blog.xml',
         
     ],
     # only loaded in demonstration mode

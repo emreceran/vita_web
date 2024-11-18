@@ -1,28 +1,20 @@
 <odoo>
-
      <record model="ir.ui.view" id="product_template_form_inherit_vita">
         <field name="name">product.template.product.inherit.form</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="website_sale.product_template_form_view"/>
         <field name="arch" type="xml">
             <!-- add state field in header -->
-
             <xpath expr="//page[@name='sales']/group[@name='sale']" position="inside">
                 <group string="eCommerce Shop" name="desc" invisible="not sale_ok">
                     <field name="custom_description_html"/>
-
                 </group>
-
             </xpath>
-
-
         </field>
     </record>
 
-
     <template id="product_template_inherit" inherit_id="website_sale.product">
         <xpath expr="//div[@id='wrap']" position="replace">
-
             <div>
                 <style>
                     <!--                    /* Fotoğraf boyutlandırma ve ortalama ayarları */-->
@@ -61,11 +53,12 @@
                 <section id="product_detail" class="container py-4 oe_website_sale">
                     <div class="row" id="product_detail_main">
 
-                       <div id="side_menu_slide" class="d-none d-md-block">
+                        <div id="side_menu_slide" class="d-none d-md-block">
                             <t t-call="vita_web.custom_sidebar_menu"/>
-                       </div>
+                        </div>
+
                         <!-- İçerik Alanı -->
-                        <div class="col-md-9 offset-md-3 custom-content-area">
+                        <div class="col-md-9 offset-md-2 custom-content-area">
 
                             <!-- Fotoğraf Alanı -->
                             <div class="product-image-section ">
@@ -86,59 +79,20 @@
                                 <div class="mb16"  id="product_header" t-att-data-editor-message="editor_msg" t-field="product.custom_description_html"/>
                             </t>
 
-                            <!--                            <div class="oe_structure oe_empty oe_structure_not_nearest mt16"-->
-                            <!--                                 id="custom_description_area"-->
-                            <!--                                 t-field="product.custom_description_html"-->
-                            <!--                                 data-oe-model="product.template"-->
-                            <!--                                 data-oe-id="product.id"-->
-                            <!--                                 data-oe-field="custom_description_html"-->
-                            <!--                                 data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"-->
-                            <!--                                 />-->
-
-
-
                             <!-- Red Cards Alanı -->
                             <t t-call="vita_web.red_cards"/>
+
+                            <!-- Sıkça sorulan sorular -->
                             <t t-call="vita_web.product_faq_template"/>
 
+                            <!-- Kategorileri Dahil Et -->
+                            <t t-call="vita_web.product_categories"/>
                             
-
-                             <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
-                            <t t-if="product">
-                                <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>" category.</t>
-                                <div class="mb16"  id="product_header" t-att-data-editor-message="editor_msg" t-field="product.related_products_html"/>
-                            </t>
-
-
-                            <!--                                 &lt;!&ndash; Ürün Özgün İçerik Alanı (Drag-and-Drop) &ndash;&gt;-->
-                            <!--                                <t t-if="product">-->
-                            <!--                                    <t t-set='editor_msg'>Diğer Ürünler eklemek için  "<t t-esc='product.name'/>" category.</t>-->
-                            <!--                                    <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.related_products_html"/>-->
-                            <!--                                </t>-->
-
-                            <t t-call="vita_web.diger_hizmetler"/>
-
-
-
-                            <!-- Diğer Hizmetler Başlığı ve Boş Alan -->
-                            <!--                            <div class="custom-services-area">-->
-                            <!--                                <h3>Diğer Hizmetler</h3>-->
-                            <!--                                &lt;!&ndash; Diğer Hizmetler için içerik buraya eklenecek &ndash;&gt;-->
-                            <!--                            </div>-->
-
                             <div id="o_product_terms_and_share" class="d-flex justify-content-between flex-column flex-md-row align-items-md-end mb-3"></div>
-                         
-                            
                         </div>
-
                     </div>
                 </section>
-
             </div>
-
         </xpath>
     </template>
-
-
-
 </odoo>
