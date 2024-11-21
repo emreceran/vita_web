@@ -48,16 +48,5 @@
             </section>
         </xpath>
     </template>
-   <!-- <template id="custom_blog_2_columns" inherit_id="website_blog.blog_post_short">
-        <xpath expr="//div[@id='o_wblog_posts_loop_container']" position="replace">
-            <div id="o_wblog_posts_loop_container" class="row"> 
-                <t t-call="website_blog.posts_loop">
-                    <t t-if="not blog" t-set="posts_list_show_parent_blog" t-value="True"/>
-                </t>
-                <div t-attf-class="col-12 col-md-3 d-flex #{opt_blog_list_view and 'col-lg-4' or 'ms-lg-5'}">
-                    <t t-call="vita_web.custom_sidebar_menu"/>
-                </div>
-            </div>
-        </xpath>
-    </template> -->
+
 </odoo>
