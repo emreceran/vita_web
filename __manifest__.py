@@ -34,7 +34,7 @@ Long description of module's purpose
         'views/sorular.xml',
         'views/product_categories.xml',
         'views/top_footer.xml',
-        # 'views/custom_blog.xml',
+        'views/blog_post.xml',
         
     ],
     # only loaded in demonstration mode
