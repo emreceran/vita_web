@@ -26,8 +26,6 @@ Long description of module's purpose
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
-        'views/side.xml',
         'views/red_cards.xml',
         'views/product_list.xml',
         'views/products_item.xml',
@@ -35,6 +33,7 @@ Long description of module's purpose
         'views/product_categories.xml',
         'views/top_footer.xml',
         'views/blog_post.xml',
+        'views/side.xml',
         
     ],
     # only loaded in demonstration mode
