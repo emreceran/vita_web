@@ -1,4 +1,3 @@
-/* Hizmetler Başlık Stili */
 .hizmetler-baslik {
     font-size: 24px;
     font-weight: bold;
@@ -6,73 +5,81 @@
     background-color: #b44454;
     padding: 10px 20px;
     margin: 20px 0 0 0; /* Üstten daha fazla boşluk ve alttan daraltılmış boşluk */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
     text-align: center;
     width: 100%;
     max-width: 960px;
 }
 
-/* Hizmetler Konteyner ve Hizmet Kutusu */
 .hizmetler-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Varsayılan olarak 3 sütun */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
     width: 100%;
     max-width: 960px;
-    padding-top: 10px;
-    background-color: #fff;
-    border: #b44454 solid 3px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding-top: 15px;
 }
 
 .hizmet-kutusu {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border: 1px solid transparent;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    text-decoration: none; /* Link alt çizgisi kaldırıldı */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
 }
 
 .hizmet-kutusu:hover {
-    transform: scale(1.05); /* Hover sırasında biraz büyüme efekti */
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    border-image: linear-gradient(to right, #b44454, #ff5e6c) 1;
 }
 
 .hizmet-kutusu img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.5s ease;
+}
+
+.hizmet-kutusu:hover img {
+    transform: scale(1.1);
 }
 
 .hizmet-baslik {
     font-size: 16px;
     font-weight: bold;
-    margin: 10px 0 5px 0; /* Başlık ortalandı ve alt boşluk azaltıldı */
+    margin: 10px 0 5px 0;
     color: #333;
     text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Responsive Ayarlar */
-@media (max-width: 1024px) {
-    .hizmetler-container {
-        grid-template-columns: repeat(3, 1fr); /* Tabletler için 3 sütun */
-    }
+.hizmet-kutusu:hover .hizmet-baslik {
+    color: #b44454;
+    transform: translateY(-5px);
 }
 
 @media (max-width: 768px) {
     .hizmetler-container {
-        grid-template-columns: repeat(2, 1fr); /* Küçük ekranlar için 2 sütun */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .hizmetler-container {
-        grid-template-columns: 1fr; /* Mobil ekranlar için 1 sütun */
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    .hizmet-baslik {
-        font-size: 14px;
+    .hizmetler-baslik {
+        font-size: 18px;
+        padding: 8px 15px;
     }
 }

@@ -1,15 +1,17 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
-    /* Side Menu */
+  /* Side Menu */
     .side-menu {
-    width: 300px;
-    padding: 20px;
-    position: fixed;
-    z-index: 1000;
-    left: 100px;
+        width: 300px;
+        padding: 20px;
+        position: fixed; /* Sabit konum */
+        transform: translateY(0);
+        /* transition: transform 0.1s ease-out; Daha hızlı bir geçiş süresi */
+        z-index: 1000; /* Menü diğer elementlerin üstünde olsun */
+        left: 6rem; /* Yan menünün konumu */
     }
-   
+
   
 
     .side-menu ul {
@@ -83,8 +85,8 @@
     }
 
     /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
-    .side-menu ul li a:hover .box-text span,
-    .side-menu ul li a:hover .box-text small {
+    .side-menu ul li .box:hover .box-text span,
+    .side-menu ul li .box:hover .box-text small {
     color: #fff; /* Hover sırasında tüm yazılar beyaz */
     }
 
@@ -253,7 +255,7 @@
         gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
         margin: 50px;
         align-items: flex-start;
-        padding-left: 350px;
+        /* padding-left: 350px; */
     }
 
     .custom-red-box {

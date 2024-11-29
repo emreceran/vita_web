@@ -8,9 +8,12 @@
         <div class="hizmetler-container">
             <t t-foreach="request.env['product.template'].search([('public_categ_ids', 'in', product.public_categ_ids.ids), ('id', '!=', product.id)])" t-as="related_product">
                 <a t-att-href="related_product.website_url" class="hizmet-kutusu">
-                    <img t-att-src="website.image_url(related_product, 'img_2')" alt="Hizmet Resmi" loading="lazy" />
+                    <div class="image-container">
+                        <img t-att-src="website.image_url(related_product, 'img_2')" alt="Hizmet Resmi" loading="lazy" />
+                    </div>
                     <div class="hizmet-baslik"><t t-esc="related_product.name" /></div>
                 </a>
+
             </t>
         </div>
     </template>
