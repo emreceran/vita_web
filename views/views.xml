@@ -13,7 +13,7 @@
         </field>
     </record>
 
-    <record id="view_users_form_inherit" model="ir.ui.view">
+    <!-- <record id="view_users_form_inherit" model="ir.ui.view">
         <field name="name">res.users.form.inherit</field>
         <field name="model">res.users</field>
         <field name="inherit_id" ref="base.view_users_form" />
@@ -27,7 +27,7 @@
                 </page>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <template id="product_template_inherit" inherit_id="website_sale.product">
         <xpath expr="//div[@id='wrap']" position="replace">
