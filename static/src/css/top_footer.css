@@ -1,0 +1,15 @@
+
+
+
+/* Varsayılan stil (normal boyut) */
+  #top_footer img {
+    height: 48px;
+  }
+
+  /* Medium altı için (max-width: 768px) */
+  @media (max-width: 768px) {
+    #top_footer img {
+      width: 75%; /* Genişliği %75'e indir */
+      height: 75%; /* yüksekliği %75'e indir */
+    }
+  }
