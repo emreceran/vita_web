@@ -1,85 +1,27 @@
-.hizmetler-baslik {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #b44454;
-    padding: 10px 20px;
-    margin: 20px 0 0 0; /* Üstten daha fazla boşluk ve alttan daraltılmış boşluk */
-    border-radius: 10px;
-    text-align: center;
-    width: 100%;
-    max-width: 960px;
+.servicess_container{
+    box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+    border-radius: 0.5em;
+    border-top: 1em solid hsl(0, 71%, 43%);
 }
 
-.hizmetler-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-    width: 100%;
-    max-width: 960px;
-    padding-top: 15px;
-}
-
-.hizmet-kutusu {
-    background: linear-gradient(135deg, #ffffff, #f9f9f9);
-    border: 1px solid transparent;
+.card {
+    height: 11rem;;
     border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
 }
 
-.hizmet-kutusu:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    border-image: linear-gradient(to right, #b44454, #ff5e6c) 1;
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
 }
 
-.hizmet-kutusu img {
-    width: 100%;
-    height: auto;
+.card img {
+    height: 5.5rem;
     object-fit: cover;
-    aspect-ratio: 16/9;
-    transition: transform 0.5s ease;
 }
 
-.hizmet-kutusu:hover img {
-    transform: scale(1.1);
-}
 
-.hizmet-baslik {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 10px 0 5px 0;
-    color: #333;
-    text-align: center;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
 
-.hizmet-kutusu:hover .hizmet-baslik {
-    color: #b44454;
-    transform: translateY(-5px);
-}
-
-@media (max-width: 768px) {
-    .hizmetler-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hizmetler-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .hizmetler-baslik {
-        font-size: 18px;
-        padding: 8px 15px;
-    }
-}

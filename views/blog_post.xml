@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-   
+
     <!-- Blog Detay Sayfası İçin Yeni Menü -->
     <template id="blog_post_sidebar_inherit" inherit_id="website_blog.blog_post_complete">
         <xpath expr="//section[@id='o_wblog_post_main']" position="replace">
             <section id="o_wblog_post_main" t-attf-class="container pt-4 pb-5 #{'anim' in request.params and 'o_wblog_post_main_transition'}">
                 <div t-if="opt_blog_post_sidebar" t-attf-class="mx-auto #{opt_blog_post_readable and 'o_wblog_read_with_sidebar'}">
                     <div t-attf-class="d-flex flex-column flex-lg-row #{opt_blog_post_readable and 'justify-content-between'}">
-                        <div id="o_wblog_post_sidebar_col" t-attf-class="#{not opt_blog_post_readable and 'flex-grow-1 w-lg-25'} d-none d-md-block">
+                        <div id="o_wblog_post_sidebar_col" t-attf-class="#{not opt_blog_post_readable and 'flex-grow-1 w-lg-25'} d-none d-lg-block">
                             <t t-call="vita_web.custom_sidebar_menu"/>
                         </div>
                         <div id="o_wblog_post_content" t-attf-class="#{opt_blog_post_readable and 'o_container_small mx-0 w-100 flex-shrink-0' or 'w-lg-75'}">
                             <t t-call="website_blog.blog_post_content"/>
                         </div>
-                        
+
                     </div>
                 </div>
                 <!-- No-Sidebar Layout
@@ -27,37 +27,39 @@
                 </div> -->
             </section>
         </xpath>
-       
+
     </template>
 
 
-     <template id="opt_blog_sidebar_hep" name="hep Sidebar" inherit_id="website_blog.blog_post_short" active="True">
+    <template id="opt_blog_sidebar_hep" name="hep Sidebar" inherit_id="website_blog.blog_post_short" active="True">
         <xpath expr="//section[@id='o_wblog_index_content']" position="replace">
             <section id="o_wblog_index_content" t-att-class="opt_blog_cards_design and 'o_wblog_page_cards_bg'">
                 <div class="container py-4">
                     <div t-if="original_search and posts" class="alert alert-warning mt8">
-                        No results found for '<span t-esc="original_search"/>'. Showing results for '<span t-esc="search"/>'.
+                        No results found for '<span t-esc="original_search"/>
+                                                '. Showing results for '<span t-esc="search"/>
+                                                '.
+                </div>
+                <div t-attf-class="row #{opt_blog_sidebar_show and 'justify-content-between' or 'justify-content-center'}">
+                    <div t-attf-class="col-12 col-lg-3 d-flex #{opt_blog_list_view and 'col-lg-4' or 'ms-lg-5'} d-none d-lg-block">
+                        <t t-call="vita_web.custom_sidebar_menu"/>
                     </div>
-                    <div t-attf-class="row #{opt_blog_sidebar_show and 'justify-content-between' or 'justify-content-center'}">
-                        <div t-attf-class="col-12 col-md-3 d-flex #{opt_blog_list_view and 'col-lg-4' or 'ms-lg-5'} d-none d-md-block">
-                            <t t-call="vita_web.custom_sidebar_menu"/>
-                        </div>
 
-                        <div id="o_wblog_posts_loop_container" t-attf-class="col #{'o_container_small mx-0' if opt_blog_list_view else ''}">
+                    <div id="o_wblog_posts_loop_container" t-attf-class="col #{'o_container_small mx-0' if opt_blog_list_view else ''}">
 
-                            <t t-call="website_blog.posts_loop">
-                                <t t-if="not blog" t-set="posts_list_show_parent_blog" t-value="True"/>
-                            </t>
+                        <t t-call="website_blog.posts_loop">
+                            <t t-if="not blog" t-set="posts_list_show_parent_blog" t-value="True"/>
+                        </t>
 
-                            <t t-call="website.pager">
-                                <t t-set="classname" t-valuef="justify-content-center"/>
-                                <t t-set="extraLinkClass" t-valuef="post_link"/>
-                            </t>
-                        </div>
+                        <t t-call="website.pager">
+                            <t t-set="classname" t-valuef="justify-content-center"/>
+                            <t t-set="extraLinkClass" t-valuef="post_link"/>
+                        </t>
                     </div>
                 </div>
-            </section>
-        </xpath>
-    </template>
+            </div>
+        </section>
+    </xpath>
+</template>
 
 </odoo>
