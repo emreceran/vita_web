@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
    
     function updateSidebarPosition() {
         const targetRect = activeTarget.getBoundingClientRect();
-        if (activeTarget == targetElement2 && activeTarget == targetElement1)
+        if (activeTarget == targetElement2 || activeTarget == targetElement1)
         {
             // Hedef element görünüyorsa
             if (targetRect.bottom > 0) {

@@ -1,8 +1,7 @@
- 
- <odoo>
+<odoo>
     <template id="top_footer_template" name="TOP FOOTER Template" inherit_id="website.layout">
         <xpath expr="//footer" position="before">
-            <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/top_footer.css"/>
+            <link rel="stylesheet" t-att-href="'/vita_web/static/src/css/top_footer.css'"/>
             <div id="top_footer" class="bg-white border border-3 border-light">
                 <div class="container-fluid">
                     <div class="row ">
@@ -10,42 +9,42 @@
                             <span class="p-1 p-md-3">
                                 <a href="https://www.iso.org/home.html" target="_blank" class="text-decoration-none ">
                                     <span class="m-0 text-muted">
-                                      <img src="/vita_web/static/src/icons/iso.jpeg" alt="iso"/>
+                                        <img src="/vita_web/static/src/icons/iso.jpeg" alt="iso"/>
                                     </span>
                                 </a>
                             </span>
                             <span class="p-1 p-md-3">
                                 <a href="https://commission.europa.eu/index_en" target="_blank" class="text-decoration-none ">
                                     <span class="m-0 text-muted">
-                                      <img src="/vita_web/static/src/icons/europan.png" alt="europan"/>
+                                        <img src="/vita_web/static/src/icons/europan.png" alt="europan"/>
                                     </span>
                                 </a>
                             </span>
                             <span class="p-1 p-md-3">
                                 <a href="https://www.csgb.gov.tr/" target="_blank" class="text-decoration-none ">
                                     <span class="m-0 text-muted">
-                                      <img src="/vita_web/static/src/icons/çsgb.jpg" alt="ÇSGB"/>
+                                        <img src="/vita_web/static/src/icons/çsgb.jpg" alt="ÇSGB"/>
                                     </span>
                                 </a>
                             </span>
                             <span class="p-1 p-md-3">
                                 <a href="https://www.turkak.org.tr/" target="_blank" class="text-decoration-none ">
                                     <span class="m-0 text-muted">
-                                      <img src="/vita_web/static/src/icons/türkak.png" alt="turkak"/>
+                                        <img src="/vita_web/static/src/icons/türkak.png" alt="turkak"/>
                                     </span>
                                 </a>
                             </span>
                             <span class="p-1 p-md-3">
                                 <a href="https://www.tubitak.gov.tr/" target="_blank" class="text-decoration-none ">
                                     <span class="m-0 text-muted">
-                                      <img src="/vita_web/static/src/icons/tübitak.jpeg" alt="tübitak"/>
+                                        <img src="/vita_web/static/src/icons/tübitak.jpeg" alt="tübitak"/>
                                     </span>
                                 </a>
                             </span>
                             <span class="p-1 p-md-3">
                                 <a href="https://www.kosgeb.gov.tr/" target="_blank" class="text-decoration-none ">
                                     <span class="m-0 text-muted">
-                                      <img src="/vita_web/static/src/icons/kosgeb.jpeg" alt="kosgeb"/>
+                                        <img src="/vita_web/static/src/icons/kosgeb.jpeg" alt="kosgeb"/>
                                     </span>
                                 </a>
                             </span>

@@ -3,11 +3,10 @@
     'name': "vita_web",
    
 
-
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
     'description': """
-Long description of module's purpose
+    Long description of module's purpose
     """,
 
     'author': "My Company",
@@ -20,8 +19,15 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website_sale', 'vita_data', 'website_blog'],
-
+    'depends': ['base', 'web', 'website', 'website_sale', 'vita_data', 'website_blog'],
+    # 'assets': {
+    #         'web.assets_frontend': [
+    #             '/vita_header/static/src/css/header.css',
+    #             '/vita_web/static/src/css/side_bar2.css',
+    #             '/vita_web/static/src/css/other_services.css',
+    #             '/vita_web/static/src/css/top_footer.css',
+    #         ],
+    #     },
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
@@ -34,8 +40,8 @@ Long description of module's purpose
         'views/top_footer.xml',
         'views/blog_post.xml',
         'views/side.xml',
-        
     ],
+    
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
