@@ -1,7 +1,7 @@
 .servicess_container{
     box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
     border-radius: 0.5em;
-    border-top: 1em solid hsl(0, 71%, 43%);
+    border-top: 1em solid hsl(0, 71%, 43%) !important;
 }
 
 .card {

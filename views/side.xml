@@ -353,7 +353,136 @@
       <div class="overlay"></div>
 
     </div>
-    <script src="/vita_web/static/src/js/side_bar.js"></script>
-    <script src="/vita_web/static/src/js/side_slide.js"></script>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+          // Side-menu veya carousel'e hover olduğunda overlay gösterilir
+          const sideMenu = document.querySelector('.side-menu');
+          const overlay = document.querySelector('.overlay');
+          
+          if (sideMenu &amp;&amp; overlay) {
+              sideMenu.addEventListener('mouseenter', function() {
+              overlay.style.display = 'block';
+              });
+              overlay.addEventListener('click', function() {
+              overlay.style.display = 'none';
+              });
+              sideMenu.addEventListener('mouseleave', function() {
+              overlay.style.display = 'none';
+              });
+          }
+
+          // Carousel kaydırma işlevi
+          function slideCarousel() {
+              const carousels = document.querySelectorAll('.carousel');
+              carousels.forEach(carousel =&gt; {
+              const carouselInner = carousel.querySelector('.carousel-inner');
+              const carouselItems = carousel.querySelectorAll('.carousel-item');
+              const totalItems = carouselItems.length;
+              if (totalItems === 0) return;
+              let currentIndex = 0;
+              const visibleItems = 4;
+              for (let i = 0; i &lt; visibleItems; i++) {
+                  if (carouselItems[i]) {
+                  const clone = carouselItems[i].cloneNode(true);
+                  carouselInner.appendChild(clone);
+                  }
+              }
+              setInterval(() =&gt; {
+                  currentIndex++;
+
+                  if (currentIndex === totalItems) {
+                  carouselInner.style.transition = 'none';
+                  currentIndex = 0;
+                  const resetOffset = -currentIndex * 190;
+                  carouselInner.style.transform = `translateX(${resetOffset}px)`;
+
+                  setTimeout(() =&gt; {
+                      carouselInner.style.transition = 'transform 0.5s ease';
+                  }, 0);
+                  } else {
+                  const offset = -currentIndex * 190;
+                  carouselInner.style.transform = `translateX(${offset}px)`;
+                  }
+              }, 3000);
+              });
+          }
+          slideCarousel();
+      });
+    </script>
+    <script type="text/javascript">
+
+      document.addEventListener("DOMContentLoaded", function () {
+          const sideMenu = document.querySelector(".side-menu");
+          const targetElement1 = document.getElementById("o_wblog_blog_top");
+          const targetElement2 = document.getElementById("o_wblog_post_top");
+          const targetElement3 = document.getElementById("products_grid");
+          const targetElement4 = document.getElementById("product_detail");
+          const bottomElement = document.getElementById("bottom");
+          const ScrollElement = document.getElementById("wrapwrap");
+          function getActiveTarget(target1, target2, target3, target4) {
+              if (target1) {
+                  return target1; // Eğer target1 mevcutsa onu döndür
+              } else if (target2) {
+                  return target2; // Eğer target2 mevcutsa onu döndür
+              } else if (target3) {
+                  return target3; // Eğer target3 mevcutsa onu döndür    
+              } else if (target4) {
+                  return target4; // Eğer target4 mevcutsa onu döndür    
+              } else {
+                  console.warn("Hiçbir targetElement bulunamadı.");
+                  return null; // Eğer hiçbir target yoksa null döndür
+              }
+          }
+          
+          const activeTarget = getActiveTarget(targetElement1, targetElement2, targetElement3, targetElement4);
+          if (!sideMenu || !activeTarget || !bottomElement) {
+              console.warn("Gerekli elementlerden biri bulunamadı.");
+              return;
+          }
+          
+
+          function isOverlap(element1, element2) {
+              const rect1 = element1.getBoundingClientRect();
+              const rect2 = element2.getBoundingClientRect();
+
+              return !(
+                  rect1.right &lt; rect2.left ||
+                  rect1.left &gt; rect2.right ||
+                  rect1.bottom &lt; rect2.top ||
+                  rect1.top &gt; rect2.bottom
+              );
+          }
+        
+          function updateSidebarPosition() {
+              const targetRect = activeTarget.getBoundingClientRect();
+              if (activeTarget == targetElement2 || activeTarget == targetElement1)
+              {
+                  // Hedef element görünüyorsa
+                  if (targetRect.bottom &gt; 0) {
+                      const scrollY = ScrollElement.scrollTop; // Scroll miktarını al
+                      sideMenu.style.transform = `translateY(${-scrollY}px)`;
+                  } 
+              }
+
+              // Footer ile çakışma kontrolü (Bu kısım değişmedi)
+              if (isOverlap(sideMenu, bottomElement)) {
+                  sideMenu.style.visibility = "hidden";
+                  console.log("kapalı")
+              } else {
+                  sideMenu.style.visibility = "visible";
+                  console.log("açık")
+              }
+
+              // Sürekli kontrol için animasyon döngüsü
+              requestAnimationFrame(updateSidebarPosition);
+          }
+
+          // Fonksiyonu başlat
+          updateSidebarPosition();
+      });
+
+    </script>
+
   </template>
 </odoo> 
