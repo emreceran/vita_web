@@ -36,6 +36,15 @@ Long description of module's purpose
         'views/side.xml',
         
     ],
+
+    # 'assets': {
+    #     'web.assets_frontend': [
+    #         'vita_web/static/src/css/other_services.css',
+    #         'vita_web/static/src/css/side_bar2.css',
+    #         # 'vita_header/static/src/js/header.js',
+    #     ],
+    #
+    # },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
