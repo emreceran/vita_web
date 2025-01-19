@@ -3,7 +3,7 @@
         <style>
             .custom-cards-container {
             width: 100%;
-            max-width: 960px;
+<!--            max-width: 960px;-->
             display: flex;
             margin-bottom: 20px;
             padding: 0;

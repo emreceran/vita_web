@@ -10,7 +10,7 @@
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1rem;
                 font-weight: bold;
                 text-align: center;
             font-style: italic;
@@ -48,11 +48,11 @@
                 <!-- Soru ve Cevap 1 -->
                 <t t-if="product.faq_question1">
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
+                        <h4 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" aria-expanded="true" aria-controls="collapseOne">
                                 <span t-field="product.faq_question1"/>
                             </button>
-                        </h2>
+                        </h4>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
                             <div class="accordion-body">
                                 <span t-field="product.faq_answer1"/>
