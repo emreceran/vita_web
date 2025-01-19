@@ -12,7 +12,7 @@
             }
 
             .custom-cards {
-            height: 75px; /* Kart yüksekliği */
+            height: auto;; /* Kart yüksekliği */
             flex: 1;
             transition: all 0.2s ease;
             cursor: pointer;
@@ -44,17 +44,18 @@
             }
 
             .custom-cards h5 {
-            font-size: 12px;
-            margin: 0;
+            font-size: 1rem;
+            margin-top: 5px;
             font-weight: bold;
             color: #fff;
+            text-align: left;
             }
 
             .custom-cards p {
             max-width: 200px;
             word-wrap: break-word;
             text-align: left;
-            font-size: 8px;
+            font-size: 0.8rem;
             margin: 5px 0 0 0;
             color: #f1f1f1;
             }

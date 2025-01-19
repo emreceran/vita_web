@@ -2,23 +2,23 @@
     <template id="product_faq_template" name="Product FAQ Template">
         <style>
             .faq-section {
-                background-color: #001f3f;
+                background: linear-gradient(to right, #001f3f , #0074d9   );
                 color: #fff;
-                padding: 20px;
+                padding: 2rem;
                 border-radius: 10px;
                 margin-bottom: 20px;
             }
 
-            h2 {
-                font-size: 1rem;
+            .accordion-header span {
+                font-size: 1.5rem !important;
                 font-weight: bold;
                 text-align: center;
-            font-style: italic;
+                font-style: italic;
             }
 
             .accordion-button:not(.collapsed) {
                 color: white;
-                background: linear-gradient(to right, #630311, #f50528);
+                background: none;
                 border-color: #b44454;
             }
 
@@ -31,12 +31,14 @@
             }
 
             .accordion-body {
-                background-color: #ffffff;
+<!--                background-color: #ede9dd;-->
                 color: #666;
             }
 
-            .accordion-item {
-                border: 1px solid #b44454;
+            .accordion-item span {
+                font-weight:bold;
+            font-size: 1.1rem;
+            text-align:left;
             }
         </style>
 
@@ -48,13 +50,13 @@
                 <!-- Soru ve Cevap 1 -->
                 <t t-if="product.faq_question1">
                     <div class="accordion-item">
-                        <h4 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" aria-expanded="true" aria-controls="collapseOne">
+                        <h4 class="accordion-header mt-2" id="headingOne">
+                            <button class="accordion-button justify-content-center"  type="button" aria-expanded="true" aria-controls="collapseOne">
                                 <span t-field="product.faq_question1"/>
                             </button>
                         </h4>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
-                            <div class="accordion-body">
+                            <div class="accordion-body bg-light">
                                 <span t-field="product.faq_answer1"/>
                             </div>
                         </div>
@@ -70,7 +72,7 @@
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#productAccordion">
-                            <div class="accordion-body">
+                            <div class="accordion-body bg-light">
                                 <span t-field="product.faq_answer2"/>
                             </div>
                         </div>
@@ -86,7 +88,7 @@
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#productAccordion">
-                            <div class="accordion-body">
+                            <div class="accordion-body bg-light">
                                 <span t-field="product.faq_answer3"/>
                             </div>
                         </div>

@@ -1,11 +1,13 @@
 <odoo>
     <template id="product_categories" name="Product Categories">
-<!--        <link rel="stylesheet" t-att-href="'/vita_web/static/src/css/other_services.css'"/>-->
+        <!--        <link rel="stylesheet" t-att-href="'/vita_web/static/src/css/other_services.css'"/>-->
         <style>
             .servicess_container{
             box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
             border-radius: 0.5em;
-            border-top: 1em solid hsl(0, 71%, 43%) !important;
+<!--            border-top: 1em solid hsl(0, 71%, 43%) !important;-->
+<!--            background: linear-gradient(to right, #eb1d0e, #e6584e);-->
+
             }
 
             .card {
@@ -31,7 +33,7 @@
 
 
         </style>
-        <div class="container servicess_container mt-5 p-5">
+        <div class="container bg-light servicess_container mt-5 p-5">
             <h2 class="text-start fw-bold fs-3 mb-5">Diğer Hizmetlerimiz</h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3 p-3">
                 <t t-set="product_model" t-value="env['product.template']"/>
