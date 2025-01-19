@@ -1,0 +1,9 @@
+<odoo>
+    <template id="assets" inherit_id="web.assets_frontend" name="Add Custom CSS">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/side_bar2.css"/>
+            <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/other_services.css"/>
+            <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/top_footer.css"/>
+        </xpath>
+    </template>
+</odoo>

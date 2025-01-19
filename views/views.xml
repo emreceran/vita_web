@@ -1,5 +1,5 @@
 <odoo>
-     <record model="ir.ui.view" id="product_template_form_inherit_vita">
+    <record model="ir.ui.view" id="product_template_form_inherit_vita">
         <field name="name">product.template.product.inherit.form</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="website_sale.product_template_form_view"/>
@@ -13,17 +13,26 @@
         </field>
     </record>
 
+    <record id="view_users_form_inherit" model="ir.ui.view">
+        <field name="name">res.users.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Kullanıcı Detay">
+                    <group>
+                        <field name="profilePage"/>
+                        <field name="linkedin"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
     <template id="product_template_inherit" inherit_id="website_sale.product">
         <xpath expr="//div[@id='wrap']" position="replace">
             <div>
                 <style>
-                    <!--                    /* Fotoğraf boyutlandırma ve ortalama ayarları */-->
-                    <!--                    .product-image-small {-->
-                    <!--                    max-width: 40vw;-->
-                    <!--                    width: 100%;-->
-                    <!--                    height: auto;-->
-                    <!--                    }-->
-
                     /* Ortalamak için section stili */
                     .product-image-section {
                     display: flex;
@@ -50,46 +59,49 @@
                     }
                 </style>
 
-                <section id="product_detail" class="container py-4 oe_website_sale">
+                <section id="product_detail" class="container-fluid py-4 oe_website_sale">
                     <div class="row" id="product_detail_main">
 
-                        <div id="side_menu_slide" class="d-none d-md-block">
+                        <div id="side_menu_slide" class="d-none d-lg-block col-lg-2 col-xxl-2">
                             <t t-call="vita_web.custom_sidebar_menu"/>
                         </div>
-
                         <!-- İçerik Alanı -->
-                        <div class="col-md-9 offset-md-2 custom-content-area">
+                        <div class="col-12 col-lg-6 col-xl-7 ms-xl-auto  col-xxl-8 mx-auto custom-contenst-area">
 
-                            <!-- Fotoğraf Alanı -->
-                            <div class="product-image-section ">
-                                <t t-set="image_holder" t-value="product._get_image_holder()"/>
-                                <span t-field="image_holder.image_1920"
-                                      t-options="{'widget': 'image', 'itemprop': 'image'}"
-                                      class="product-image-small" />
-                            </div>
+                            <center class="">
+                                <!-- Fotoğraf Alanı -->
+                                <div class="product-image-section">
+                                    <t t-set="image_holder" t-value="product._get_image_holder()"/>
+                                    <span t-field="image_holder.image_1920" t-options="{'widget': 'image', 'itemprop': 'image'}" class="product-image-small" />
+                                </div>
 
-                            <!-- Ürün Başlık ve Açıklama Alanı (Ortalanmış, 8 Kolon Genişlikte) -->
-                            <div class="text-center custom-gap" id="product_info">
-                                <h2 itemprop="name"><t t-esc="product.name"/></h2>
-                            </div>
+                                <!-- Ürün Başlık ve Açıklama Alanı (Ortalanmış, 8 Kolon Genişlikte) -->
+                                <div class="text-center custom-gap" id="product_info">
+                                    <h2 itemprop="name">
+                                        <t t-esc="product.name"/>
+                                    </h2>
+                                </div>
 
-                            <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
-                            <t t-if="product">
-                                <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>" category.</t>
-                                <div class="mb16"  id="product_header" t-att-data-editor-message="editor_msg" t-field="product.custom_description_html"/>
-                            </t>
+                                <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
+                                <t t-if="product">
+                                    <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t t-esc='product.name'/>
+                                    " category.</t>
+                                    <div class="mb16" id="product_header" t-att-data-editor-message="editor_msg" t-field="product.custom_description_html"/>
+                                </t>
 
-                            <!-- Red Cards Alanı -->
-                            <t t-call="vita_web.red_cards"/>
+                                <!-- Red Cards Alanı -->
+                                <t t-call="vita_web.red_cards"/>
 
-                            <!-- Sıkça sorulan sorular -->
-                            <t t-call="vita_web.product_faq_template"/>
+                                <!-- Sıkça sorulan sorular -->
+                                <t t-call="vita_web.product_faq_template"/>
 
-                            <!-- Kategorileri Dahil Et -->
-                            <t t-call="vita_web.product_categories"/>
-                            
-                            <div id="o_product_terms_and_share" class="d-flex justify-content-between flex-column flex-md-row align-items-md-end mb-3"></div>
+                                <!-- Kategorileri Dahil Et -->
+                                <t t-call="vita_web.product_categories"/>
+
+                                <div id="o_product_terms_and_share" class="d-flex justify-content-between flex-column flex-md-row align-items-md-end mb-3"></div>
+                            </center>
                         </div>
+
                     </div>
                 </section>
             </div>

@@ -1,20 +1,24 @@
-<odoo> 
+<odoo>
     <template id="product_categories" name="Product Categories">
-        <link rel="stylesheet" type="text/css" href="/vita_web/static/src/css/other_services.css"/>  
-        <!-- Başlık -->
-        <div class="hizmetler-baslik">Diğer Hizmetlerimiz</div>
-
-        <!-- Hizmetler Konteyneri -->
-        <div class="hizmetler-container">
-            <t t-foreach="request.env['product.template'].search([('public_categ_ids', 'in', product.public_categ_ids.ids), ('id', '!=', product.id)])" t-as="related_product">
-                <a t-att-href="related_product.website_url" class="hizmet-kutusu">
-                    <div class="image-container">
-                        <img t-att-src="website.image_url(related_product, 'img_2')" alt="Hizmet Resmi" loading="lazy" />
+        <link rel="stylesheet" t-att-href="'/vita_web/static/src/css/other_services.css'"/>
+        <div class="container servicess_container mt-5 p-5">
+            <h2 class="text-start fw-bold fs-3 mb-5">Diğer Hizmetlerimiz</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3 p-3">
+                <t t-set="product_model" t-value="env['product.template']"/>
+                <t t-set="random_products" t-value="product_model.get_random_products( product.id, 15)"/>
+                <t t-foreach="random_products" t-as="related_product">
+                    <!-- Card 1 -->
+                    <div class="col">
+                        <a t-att-href="related_product.website_url" class="card">
+                            <img t-att-src="website.image_url(related_product, 'img_2')" class="card-img-top w-100" alt="Gezici Köprülü Vinç"/>
+                            <div class="card-body">
+                                <t t-esc="related_product.name" />
+                            </div>
+                        </a>
                     </div>
-                    <div class="hizmet-baslik"><t t-esc="related_product.name" /></div>
-                </a>
-
-            </t>
+                </t>
+            </div>
         </div>
+
     </template>
 </odoo>

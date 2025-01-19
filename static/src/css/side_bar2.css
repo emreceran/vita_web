@@ -1,15 +1,68 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 
+   .side_wp a:hover{
+    text-decoration: underline !important;
+   }
+
+  
+
+  .icon-bounce {
+    display: inline-block;
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
   /* Side Menu */
     .side-menu {
-        width: 300px;
-        padding: 20px;
+        width: 18rem;
+        padding: 1.2rem;
         position: fixed; /* Sabit konum */
-        transform: translateY(0);
-        /* transition: transform 0.1s ease-out; Daha hızlı bir geçiş süresi */
+        transform: translateY(0) !important;
         z-index: 1000; /* Menü diğer elementlerin üstünde olsun */
         left: 6rem; /* Yan menünün konumu */
+        font-size: small;
+    }
+    @media (min-width: 992px) and (max-width: 1200px) {
+        #o_wblog_post_content {
+            width: 60% !important;
+        }
+      }
+    
+  
+    /* Büyük ekranlar için */
+    @media (max-width: 1200px) {
+        .side-menu {
+            width: 15rem; /* Daha geniş */
+        }
+    }
+    @media (max-width: 1300px) {
+        .side-menu {
+            width: 17rem; /* Daha geniş */
+            left:5px;
+        }
+    }
+  
+    @media (min-width: 1550px) {
+        .side-menu {
+            width: 19rem; /* Daha geniş */
+        }
+    }
+    @media (min-width: 1600px) {
+        .side-menu {
+            width: 20rem; /* Daha geniş */
+        }
     }
 
   
@@ -99,6 +152,7 @@
     width: 760px; /* 190px * 4 = 760px (4 item göstermek için) */
     height: 220px;
     background-color: transparent;
+    border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     z-index: 10001;
     overflow: hidden;
@@ -138,7 +192,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); /* Daha şeffaf gradyan */
+    /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); Daha şeffaf gradyan */
     z-index: 2; /* Gradient, img'nin üzerinde olacak */
     transition: opacity 0.3s ease;
     }
@@ -150,14 +204,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Şeffaflık arttı, daha açık oldu */
+    opacity: 0; /* Hover'da overlay şeffaflaşır */
     transition: opacity 0.3s ease; /* Hover sırasında şeffaflaşacak */
     z-index: 2; /* Overlay en üstte görünecek */
     }
 
     /* Hover sırasında carousel item'i büyür ve overlay kaybolur */
     .carousel-item:hover .item-overlay {
-    opacity: 0; /* Hover'da overlay şeffaflaşır */
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5); /* Şeffaflık arttı, daha açık oldu */
     }
 
     .carousel-item:hover {
@@ -255,7 +310,6 @@
         gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
         margin: 50px;
         align-items: flex-start;
-        /* padding-left: 350px; */
     }
 
     .custom-red-box {
