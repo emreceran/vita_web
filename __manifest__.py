@@ -41,19 +41,10 @@
         'views/blog_post.xml',
         'views/side.xml',
     ],
-<<<<<<< HEAD
 
-    # 'assets': {
-    #     'web.assets_frontend': [
-    #         'vita_web/static/src/css/other_services.css',
-    #         'vita_web/static/src/css/side_bar2.css',
-    #         # 'vita_header/static/src/js/header.js',
-    #     ],
-    #
-    # },
-=======
-    
->>>>>>> e9709f1cb13442e5936c39b93593725fa0e08b34
+
+
+
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
