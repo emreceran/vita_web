@@ -1,6 +1,430 @@
 <odoo>
   <template id="custom_sidebar_menu" name="Custom Sidebar Menu">
-    <link rel="stylesheet" t-att-href="'/vita_web/static/src/css/side_bar2.css'"/>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap');
+
+
+        .side_wp a:hover{
+          text-decoration: underline !important;
+        }
+
+        @media (min-width: 992px) and (max-width: 1200px) {
+          #o_wblog_post_content {
+              width: 60% !important;
+          }
+        }
+
+
+        /* Büyük ekranlar için */
+        @media (max-width: 1200px) {
+            .side-menu {
+                width: 15rem; /* Daha geniş */
+            }
+        }
+        @media (max-width: 1300px) {
+            .side-menu {
+                width: 17rem; /* Daha geniş */
+                left:5px;
+            }
+        }
+
+        @media (min-width: 1550px) {
+            .side-menu {
+                width: 19rem; /* Daha geniş */
+            }
+        }
+        @media (min-width: 1600px) {
+            .side-menu {
+                width: 20rem; /* Daha geniş */
+            }
+        }
+
+
+        /* Side Menu */
+          .side-menu {
+              width: 18rem;
+              padding: 1.2rem;
+              position: fixed; /* Sabit konum */
+              transform: translateY(0);
+              z-index: 1000; /* Menü diğer elementlerin üstünde olsun */
+              left: 6rem; /* Yan menünün konumu */
+              font-size: small;
+          }
+
+
+
+          .side-menu ul {
+          list-style-type: none;
+          padding: 0;
+          }
+
+          .side-menu ul li {
+          margin-bottom: 5px;
+          position: relative;
+          z-index: 10001;
+          }
+
+          .side-menu ul li .box {
+          text-decoration: none;
+          font-size: 20px;
+          color: #b44454 !important;
+          padding: 10px;
+          display: block;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          transition: background-color 0.3s, color 0.3s;
+          height: 70px;
+          display: flex;
+          align-items: center;
+          border-radius: 50px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          z-index: 10001;
+          }
+
+          .side-menu ul li .box:hover {
+          background-color: #b44454;
+          color: #fff;
+          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+          border: 1px solid #b44454;
+          }
+
+          .box {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          }
+
+          .box-img img {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
+          }
+
+          .box-text {
+          margin-left: 20px;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          }
+
+          .box-text small {
+          font-size: 12px;
+          color: #666;
+          margin-top: 5px;
+          }
+
+          .box-text span {
+          font-size: 16px;
+          color: #b44454;
+          line-height: 1.2;
+          }
+
+          /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
+          .side-menu ul li .box:hover .box-text span,
+          .side-menu ul li .box:hover .box-text small {
+          color: #fff; /* Hover sırasında tüm yazılar beyaz */
+          }
+
+          /* Carousel */
+          .carousel {
+          display: none;
+          position: absolute;
+          top: 50%; /* Ortalamak için %50 */
+          left: 100%;
+          width: 760px; /* 190px * 4 = 760px (4 item göstermek için) */
+          height: 220px;
+          background-color: transparent;
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          z-index: 10001;
+          overflow: hidden;
+          transform: translateY(-50%); /* Carousel'i dikeyde ortalamak için */
+          }
+
+          .carousel-inner {
+          display: flex;
+          transition: transform 0.5s ease;
+          width: max-content;
+          }
+
+          /* Carousel Item */
+          .carousel-item {
+          position: relative;
+          flex: 0 0 190px; /* Genişlik 190px */
+          height: 220px; /* Yükseklik 220px */
+          margin: 0;
+          padding: 0;
+          display: block;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          overflow: hidden; /* Overlay'in taşmaması için */
+          transition: transform 0.3s ease;
+          }
+
+          .carousel-item img {
+          width: 190px; /* Genişlik 190px */
+          height: 220px; /* Yükseklik 220px */
+          object-fit: cover;
+          transition: transform 0.3s ease; /* Hover sırasında zoom efekti için */
+          }
+
+          .carousel-item::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)); Daha şeffaf gradyan */
+          z-index: 2; /* Gradient, img'nin üzerinde olacak */
+          transition: opacity 0.3s ease;
+          }
+
+          /* Overlay */
+          .carousel-item .item-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0; /* Hover'da overlay şeffaflaşır */
+          transition: opacity 0.3s ease; /* Hover sırasında şeffaflaşacak */
+          z-index: 2; /* Overlay en üstte görünecek */
+          }
+
+          /* Hover sırasında carousel item'i büyür ve overlay kaybolur */
+          .carousel-item:hover .item-overlay {
+              opacity: 1;
+              background-color: rgba(0, 0, 0, 0.5); /* Şeffaflık arttı, daha açık oldu */
+          }
+
+          .carousel-item:hover {
+          z-index: 3; /* Hover edilen item diğerlerinin üstünde görünür */
+          }
+
+          .carousel-item:hover img {
+          transform: scale(1.1); /* Hover sırasında resim zoom yapılır */
+          }
+
+          .carousel-title,
+          .carousel-subtitle {
+          position: absolute;
+          left: 50%;
+          font-family: 'Roboto', sans-serif !important;
+          transform: translateX(-50%);
+          color: white;
+          font-weight: bold;
+          z-index: 3;
+          opacity: 0; /* Başlangıçta görünmez */
+          transition: opacity 0.3s ease;
+          text-align: center;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Gölge ekleniyor */
+          line-height: 1.2;
+
+          }
+
+          .carousel-title {
+          top: 20%;
+          font-size: 28px;
+          }
+
+          .carousel-subtitle {
+          margin-top: 5px;
+          font-size: 24px;
+          text-align: center;
+          }
+
+          .carousel-item:hover .carousel-title,
+          .carousel-item:hover .carousel-subtitle {
+          opacity: 1;
+          }
+
+          /* Overlay */
+          .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.6);
+          z-index: 999;
+          display: none;
+          }
+
+          .carousel-prev, .carousel-next {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          z-index: 100;
+          }
+
+          .carousel-prev {
+          left: 5px;
+          }
+
+          .carousel-next {
+          right: 5px;
+          }
+
+          /* Hover sırasında carousel gösterilecek */
+          .side-menu ul li:hover .carousel {
+          display: block;
+          z-index: 10001;
+          }
+
+          /* Side-menu hover sırasında overlay aktif olacak */
+          .side-menu:hover .overlay {
+          display: block;
+          }
+
+          /* Mouse side-menu'den ayrıldığında overlay kapanacak */
+          .side-menu ul li:hover ~ .overlay {
+          display: none;
+          }
+
+
+          .custom-container {
+              display: flex;
+              gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
+              align-items: flex-start;
+          }
+
+          .custom-red-box {
+              width: 260px;
+              height: 520px;
+              background-color: red;
+          }
+
+          .custom-green-box {
+              flex-grow: 1;
+              background-color: transparent; /* Yeşil renk */
+              padding: 20px;
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+          }
+
+          .custom-cards {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr); /* Satıra 4 kart sığacak */
+              gap: 20px; /* Kartlar arasındaki boşluk */
+              list-style-type: none;
+              padding: 0;
+          }
+
+          .custom-card {
+              position: relative;
+              display: block;
+              border-radius: calc(var(--curve) * 1px);
+              overflow: hidden;
+              text-decoration: none;
+              transition: transform 0.3s ease;
+              background-color: #b44454;
+          }
+
+          .custom-card:hover {
+              transform: scale(1.05); /* Hover büyütme efekti */
+          }
+
+          .custom-card__image {
+              width: 100%;
+              height: 300px;
+              object-fit: cover;
+          }
+
+          .custom-card__overlay {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              z-index: 1;
+              border-radius: calc(var(--curve) * 1px);
+              background-color: #b44454;
+              transform: translateY(100%);
+              transition: .2s ease-in-out;
+          }
+
+          .custom-card:hover .custom-card__overlay {
+              transform: translateY(0);
+          }
+
+          .custom-card__header {
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 1em;
+              padding: 1em;
+              background-color: #b44454;
+              border-radius: calc(var(--curve) * 1px) 0 0 0;
+              text-align: center;
+          }
+
+          .custom-card__thumb {
+              flex-shrink: 0;
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+          }
+
+          .custom-card__title {
+              font-size: 1.5em;
+              margin: 0;
+              color: white;
+          }
+
+          .custom-card__description {
+              padding: 0 1.5em 1.5em;
+              margin: 0;
+              color: white;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              /* -webkit-line-clamp: 3; */
+              overflow: hidden;
+          }
+
+          .custom-separator {
+              display: flex;
+              align-items: center;
+              margin-top: 70px;
+              margin-bottom: 20px;
+              position: relative;
+              width: 100%;
+          }
+
+          .custom-separator h2 {
+              font-size: 24px;
+              color: #b44454;
+              font-family: 'Roboto', sans-serif;
+              font-weight: 700;
+              margin-right: 10px;
+              margin-left: 0; /* Sola hizalamak için */
+              white-space: nowrap;
+          }
+
+          .custom-separator::after {
+              content: "";
+              flex-grow: 1;
+              height: 2px;
+              background-color: #b44454;
+              margin-left: 10px; /* Başlıkla çizgi arasında boşluk */
+          }
+
+
+          @import url('https://fonts.googleapis.com/css?family=Lato:700');
+
+
+
+
+
+
+    </style>
     <div class="custom-container">
       <div id="side_menu" class="side-menu mobillisil">
         <ul>
@@ -359,7 +783,7 @@
           // Side-menu veya carousel'e hover olduğunda overlay gösterilir
           const sideMenu = document.querySelector('.side-menu');
           const overlay = document.querySelector('.overlay');
-          
+
           if (sideMenu &amp;&amp; overlay) {
               sideMenu.addEventListener('mouseenter', function() {
               overlay.style.display = 'block';
@@ -395,14 +819,14 @@
                   carouselInner.style.transition = 'none';
                   currentIndex = 0;
                   const resetOffset = -currentIndex * 190;
-                  carouselInner.style.transform = `translateX(${resetOffset}px)`;
+                  carouselInner.style.transform = translateX(${resetOffset}px);
 
                   setTimeout(() =&gt; {
                       carouselInner.style.transition = 'transform 0.5s ease';
                   }, 0);
                   } else {
                   const offset = -currentIndex * 190;
-                  carouselInner.style.transform = `translateX(${offset}px)`;
+                  carouselInner.style.transform = translateX(${offset}px);
                   }
               }, 3000);
               });
@@ -418,29 +842,39 @@
           const targetElement2 = document.getElementById("o_wblog_post_top");
           const targetElement3 = document.getElementById("products_grid");
           const targetElement4 = document.getElementById("product_detail");
+          let top_element; let lm=1;
           const bottomElement = document.getElementById("bottom");
           const ScrollElement = document.getElementById("wrapwrap");
           function getActiveTarget(target1, target2, target3, target4) {
               if (target1) {
+                  top_element = document.getElementById("o_wblog_posts_loop_container");
                   return target1; // Eğer target1 mevcutsa onu döndür
               } else if (target2) {
+                  top_element = document.getElementById("o_wblog_post_content");
                   return target2; // Eğer target2 mevcutsa onu döndür
               } else if (target3) {
-                  return target3; // Eğer target3 mevcutsa onu döndür    
+                  top_element = document.getElementById("red-cards");
+                  return target3; // Eğer target3 mevcutsa onu döndür
               } else if (target4) {
-                  return target4; // Eğer target4 mevcutsa onu döndür    
+                  top_element = document.getElementById("detailid");
+                  return target4; // Eğer target4 mevcutsa onu döndür
               } else {
                   console.warn("Hiçbir targetElement bulunamadı.");
                   return null; // Eğer hiçbir target yoksa null döndür
               }
           }
-          
+
           const activeTarget = getActiveTarget(targetElement1, targetElement2, targetElement3, targetElement4);
           if (!sideMenu || !activeTarget || !bottomElement) {
               console.warn("Gerekli elementlerden biri bulunamadı.");
               return;
           }
-          
+
+
+          const topPosition = top_element.getBoundingClientRect().top;
+          const sideTopPosition = sideMenu.getBoundingClientRect().top;
+          const offsetY = topPosition - sideTopPosition - 20;
+          sideMenu.style.marginTop = ${offsetY}px;
 
           function isOverlap(element1, element2) {
               const rect1 = element1.getBoundingClientRect();
@@ -453,25 +887,30 @@
                   rect1.top &gt; rect2.bottom
               );
           }
-        
+
           function updateSidebarPosition() {
-              const targetRect = activeTarget.getBoundingClientRect();
               if (activeTarget == targetElement2 || activeTarget == targetElement1)
               {
-                  // Hedef element görünüyorsa
-                  if (targetRect.bottom &gt; 0) {
-                      const scrollY = ScrollElement.scrollTop; // Scroll miktarını al
-                      sideMenu.style.transform = `translateY(${-scrollY}px)`;
-                  } 
+                const targetRect = activeTarget.getBoundingClientRect();
+                console.log(targetRect.bottom)
+                // Hedef element görünüyorsa
+                if (targetRect.bottom &gt; 0) {
+                    console.log("0altı")
+                    const scrollY = ScrollElement.scrollTop; // Scroll miktarını al
+                    console.log(scrollY)
+                    sideMenu.style.transform = translateY(${-scrollY}px);
+                }
               }
+
+
+
+
 
               // Footer ile çakışma kontrolü (Bu kısım değişmedi)
               if (isOverlap(sideMenu, bottomElement)) {
                   sideMenu.style.visibility = "hidden";
-                  console.log("kapalı")
               } else {
                   sideMenu.style.visibility = "visible";
-                  console.log("açık")
               }
 
               // Sürekli kontrol için animasyon döngüsü
@@ -485,4 +924,5 @@
     </script>
 
   </template>
-</odoo> 
+</odoo>
+
