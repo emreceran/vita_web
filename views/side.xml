@@ -152,6 +152,7 @@
           }
 
           /* Carousel Item */
+<!--        kaydedidl-->
           .carousel-item {
           position: relative;
           flex: 0 0 190px; /* Genişlik 190px */
