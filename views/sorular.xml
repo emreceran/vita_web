@@ -7,10 +7,11 @@
                 padding: 2rem;
                 border-radius: 10px;
                 margin-bottom: 20px;
+
             }
 
             .accordion-header span {
-                font-size: 1.5rem !important;
+                font-size: 1rem !important;
                 font-weight: bold;
                 text-align: center;
                 font-style: italic;
@@ -37,14 +38,14 @@
 
             .accordion-item span {
                 font-weight:bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align:left;
             }
         </style>
 
         <t t-if="product.faq_question1 or product.faq_question2 or product.faq_question3">
             <div class="faq-section">
-            <h2>Sıkça Sorulan Sorular</h2>
+            <h4>Sıkça Sorulan Sorular</h4>
             
             <div class="accordion mt-4" id="productAccordion">
                 <!-- Soru ve Cevap 1 -->
