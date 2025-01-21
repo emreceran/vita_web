@@ -82,7 +82,7 @@
           }
 
           .side-menu ul li .box:hover {
-          background-color: #b44454;
+          background: linear-gradient(to right, #001f3f , #0074d9   );
           color: #fff;
           box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
           border: 1px solid #b44454;
@@ -121,6 +121,7 @@
           font-size: 16px;
           color: #b44454;
           line-height: 1.2;
+        font-weight: bold;
           }
 
           /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */

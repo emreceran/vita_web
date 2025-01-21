@@ -5,7 +5,7 @@
     text-decoration: underline !important;
    }
 
-  
+
 
   .icon-bounce {
     display: inline-block;
@@ -39,8 +39,8 @@
             width: 60% !important;
         }
       }
-    
-  
+
+
     /* Büyük ekranlar için */
     @media (max-width: 1200px) {
         .side-menu {
@@ -53,7 +53,7 @@
             left:5px;
         }
     }
-  
+
     @media (min-width: 1550px) {
         .side-menu {
             width: 19rem; /* Daha geniş */
@@ -65,7 +65,7 @@
         }
     }
 
-  
+
 
     .side-menu ul {
     list-style-type: none;
@@ -303,8 +303,8 @@
     .side-menu ul li:hover ~ .overlay {
     display: none;
     }
-    
-    
+
+
     .custom-container {
         display: flex;
         gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
