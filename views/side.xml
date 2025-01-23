@@ -7,14 +7,14 @@
         .side_wp a:hover{
           text-decoration: underline !important;
         }
-
+                                                                                 
         @media (min-width: 992px) and (max-width: 1200px) {
           #o_wblog_post_content {
               width: 60% !important;
           }
         }
-
-
+        
+      
         /* Büyük ekranlar için */
         @media (max-width: 1200px) {
             .side-menu {
@@ -27,7 +27,7 @@
                 left:5px;
             }
         }
-
+      
         @media (min-width: 1550px) {
             .side-menu {
                 width: 19rem; /* Daha geniş */
@@ -38,7 +38,7 @@
                 width: 20rem; /* Daha geniş */
             }
         }
-
+        
 
         /* Side Menu */
           .side-menu {
@@ -50,8 +50,8 @@
               left: 6rem; /* Yan menünün konumu */
               font-size: small;
           }
-
-
+         
+        
 
           .side-menu ul {
           list-style-type: none;
@@ -82,7 +82,7 @@
           }
 
           .side-menu ul li .box:hover {
-          background: linear-gradient(to right, #001f3f , #0074d9   );
+          background-color: #b44454;
           color: #fff;
           box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
           border: 1px solid #b44454;
@@ -121,7 +121,6 @@
           font-size: 16px;
           color: #b44454;
           line-height: 1.2;
-        font-weight: bold;
           }
 
           /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
@@ -153,7 +152,6 @@
           }
 
           /* Carousel Item */
-<!--        kaydedidl-->
           .carousel-item {
           position: relative;
           flex: 0 0 190px; /* Genişlik 190px */
@@ -291,8 +289,8 @@
           .side-menu ul li:hover ~ .overlay {
           display: none;
           }
-
-
+          
+          
           .custom-container {
               display: flex;
               gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
@@ -421,11 +419,11 @@
 
           @import url('https://fonts.googleapis.com/css?family=Lato:700');
 
+         
 
+        
 
-
-
-
+          
     </style>
     <div class="custom-container">
       <div id="side_menu" class="side-menu mobillisil">
@@ -780,12 +778,14 @@
 
     </div>
 
+
+
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function() {
           // Side-menu veya carousel'e hover olduğunda overlay gösterilir
           const sideMenu = document.querySelector('.side-menu');
           const overlay = document.querySelector('.overlay');
-
+          
           if (sideMenu &amp;&amp; overlay) {
               sideMenu.addEventListener('mouseenter', function() {
               overlay.style.display = 'block';
@@ -821,14 +821,14 @@
                   carouselInner.style.transition = 'none';
                   currentIndex = 0;
                   const resetOffset = -currentIndex * 190;
-                  carouselInner.style.transform = translateX(${resetOffset}px);
+                  carouselInner.style.transform = `translateX(${resetOffset}px)`;
 
                   setTimeout(() =&gt; {
                       carouselInner.style.transition = 'transform 0.5s ease';
                   }, 0);
                   } else {
                   const offset = -currentIndex * 190;
-                  carouselInner.style.transform = translateX(${offset}px);
+                  carouselInner.style.transform = `translateX(${offset}px)`;
                   }
               }, 3000);
               });
@@ -849,34 +849,34 @@
           const ScrollElement = document.getElementById("wrapwrap");
           function getActiveTarget(target1, target2, target3, target4) {
               if (target1) {
-                  top_element = document.getElementById("o_wblog_posts_loop_container");
+                  top_element = document.getElementById("o_wblog_posts_loop_container"); 
                   return target1; // Eğer target1 mevcutsa onu döndür
               } else if (target2) {
                   top_element = document.getElementById("o_wblog_post_content");
                   return target2; // Eğer target2 mevcutsa onu döndür
               } else if (target3) {
                   top_element = document.getElementById("red-cards");
-                  return target3; // Eğer target3 mevcutsa onu döndür
+                  return target3; // Eğer target3 mevcutsa onu döndür    
               } else if (target4) {
                   top_element = document.getElementById("detailid");
-                  return target4; // Eğer target4 mevcutsa onu döndür
+                  return target4; // Eğer target4 mevcutsa onu döndür    
               } else {
                   console.warn("Hiçbir targetElement bulunamadı.");
                   return null; // Eğer hiçbir target yoksa null döndür
               }
           }
-
+          
           const activeTarget = getActiveTarget(targetElement1, targetElement2, targetElement3, targetElement4);
           if (!sideMenu || !activeTarget || !bottomElement) {
               console.warn("Gerekli elementlerden biri bulunamadı.");
               return;
           }
-
-
+          
+          
           const topPosition = top_element.getBoundingClientRect().top;
           const sideTopPosition = sideMenu.getBoundingClientRect().top;
           const offsetY = topPosition - sideTopPosition - 20;
-          sideMenu.style.marginTop = ${offsetY}px;
+          sideMenu.style.marginTop = `${offsetY}px`;
 
           function isOverlap(element1, element2) {
               const rect1 = element1.getBoundingClientRect();
@@ -889,7 +889,7 @@
                   rect1.top &gt; rect2.bottom
               );
           }
-
+        
           function updateSidebarPosition() {
               if (activeTarget == targetElement2 || activeTarget == targetElement1)
               {
@@ -900,12 +900,12 @@
                     console.log("0altı")
                     const scrollY = ScrollElement.scrollTop; // Scroll miktarını al
                     console.log(scrollY)
-                    sideMenu.style.transform = translateY(${-scrollY}px);
-                }
+                    sideMenu.style.transform = `translateY(${-scrollY}px)`;
+                } 
               }
 
 
-
+              
 
 
               // Footer ile çakışma kontrolü (Bu kısım değişmedi)
@@ -928,3 +928,17 @@
   </template>
 </odoo>
 
+
+<!-- const sideRightPosition = sideMenu.getBoundingClientRect().right;
+              const leftPosition = top_element.getBoundingClientRect().left;
+              const offsetX = leftPosition - sideRightPosition;
+              if (window.innerWidth &lt; 1250){
+                                                                            sideMenu.style.transform = `translateX(${offsetX}px)`;
+              }
+              else if(offsetX &gt; 0){
+                sideMenu.style.transform = `translateX(${offsetX -0 }px)`;
+
+              }
+                                                    
+              console.log("elementleft = "+leftPosition)
+              console.log("offsetX = "+offsetX)  --> 
