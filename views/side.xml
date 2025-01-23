@@ -927,18 +927,3 @@
 
   </template>
 </odoo>
-
-
-<!-- const sideRightPosition = sideMenu.getBoundingClientRect().right;
-              const leftPosition = top_element.getBoundingClientRect().left;
-              const offsetX = leftPosition - sideRightPosition;
-              if (window.innerWidth &lt; 1250){
-                                                                            sideMenu.style.transform = `translateX(${offsetX}px)`;
-              }
-              else if(offsetX &gt; 0){
-                sideMenu.style.transform = `translateX(${offsetX -0 }px)`;
-
-              }
-                                                    
-              console.log("elementleft = "+leftPosition)
-              console.log("offsetX = "+offsetX)  --> 
