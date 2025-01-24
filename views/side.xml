@@ -872,11 +872,13 @@
               return;
           }
           
-          
-          const topPosition = top_element.getBoundingClientRect().top;
-          const sideTopPosition = sideMenu.getBoundingClientRect().top;
-          const offsetY = topPosition - sideTopPosition - 20;
-          sideMenu.style.marginTop = `${offsetY}px`;
+          if(top_element &amp;&amp; sideMenu ){
+            const topPosition = top_element.getBoundingClientRect().top;
+            const sideTopPosition = sideMenu.getBoundingClientRect().top;
+            const offsetY = topPosition - sideTopPosition - 20;
+            sideMenu.style.marginTop = ${offsetY}px;
+          }
+
 
           function isOverlap(element1, element2) {
               const rect1 = element1.getBoundingClientRect();

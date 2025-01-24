@@ -1,0 +1,430 @@
+<style>
+/* Tüm Hizmetler başlığı */
+.hizmetler-baslik {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #b44454;
+  padding: 12px;
+  margin-bottom: 40px;
+  text-align: center;
+  border-radius: 50px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* Kategori kutucukları */
+.category-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  width: 70%; /* Tüm Hizmetler başlığıyla aynı genişlik */
+  margin: 0 auto; /* Ortalamak için */
+}
+
+.category-kutusu {
+  display: inline-block;
+  background-color: #ddd;
+  padding: 15px 25px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover efektleri */
+/* İlk üç kutucuk kırmızı olur */
+.category-container a:nth-child(1):hover,
+.category-container a:nth-child(2):hover,
+.category-container a:nth-child(3):hover {
+  background-color: hsl(0, 71%, 43%);
+  color: white;
+}
+
+/* Dördüncü ve beşinci kutucuk sarı olur */
+.category-container a:nth-child(4):hover,
+.category-container a:nth-child(5):hover {
+  background-color: hsl(45, 100%, 50%);
+  color: white;
+}
+
+/* Altıncı kutucuk gri olur */
+.category-container a:nth-child(6):hover {
+  background-color: hsl(0, 0%, 43%);
+  color: white;
+}
+
+/* Kart listeleme ve hizmet kutuları */
+.custom-card-list {
+  list-style: none;
+  padding: 0;
+}
+
+.custom-card-list li {
+  scroll-margin-top: 100px;
+  position: relative;
+  max-width: 70%;
+  margin: 2rem auto;
+  padding: 2rem 1rem 1rem;
+  box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Kart renkleri */
+/* 1, 2 ve 3. kartlar kırmızı tonlarda */
+.custom-card-list li:nth-child(1)::before,
+.custom-card-list li:nth-child(2)::before,
+.custom-card-list li:nth-child(3)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px; /* Bar yüksekliği */
+  background: linear-gradient(to right, hsl(0, 71%, 43%), hsl(0, 71%, 88%));
+  z-index: 1;
+}
+
+/* 4 ve 5. kartlar sarı tonlarda */
+.custom-card-list li:nth-child(4)::before,
+.custom-card-list li:nth-child(5)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px; /* Bar yüksekliği */
+  background: linear-gradient(to right, hsl(45, 100%, 50%), hsl(45, 100%, 88%));
+  z-index: 1;
+}
+
+/* 6. kart gri tonlarında */
+.custom-card-list li:nth-child(6)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px; /* Bar yüksekliği */
+  background: linear-gradient(to right, hsl(0, 0%, 43%), hsl(0, 0%, 88%));
+  z-index: 1;
+}
+
+/* Başlıklar sola hizalandı ve bold yapıldı */
+.custom-card-list h3 {
+  text-align: left;  /* Sola hizalama */
+  font-weight: bold; /* Kalın yazı */
+  margin: 0 0 1rem;
+  color: rgb(70 70 70);
+  font-size: 1.5rem;
+  position: relative; /* Barın üstünde görünmesi için */
+  z-index: 2; /* Başlığın barın üzerinde görünmesi için */
+}
+
+/* Hizmetler grid yapısı - Tek satırda 5 sütun */
+.custom-hizmetler-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 sütun */
+  gap: 10px;
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.custom-hizmet-kutusu {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.custom-hizmet-kutusu:hover {
+  transform: scale(1.05);
+}
+
+.custom-hizmet-kutusu img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.custom-hizmet-baslik {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px;
+  color: #333;
+}
+
+.custom-hizmet-aciklama {
+  font-size: 10px;
+  margin: 0 10px 10px;
+  color: #666;
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 1024px) {
+  .custom-hizmetler-container {
+    grid-template-columns: repeat(3, 1fr); /* Tabletler için 3 sütun */
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-hizmetler-container {
+    grid-template-columns: repeat(2, 1fr); /* Küçük ekranlar için 2 sütun */
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-hizmetler-container {
+    grid-template-columns: 1fr; /* Mobil ekranlar için 1 sütun */
+  }
+}
+
+@media (min-width: 40em) {
+  .custom-card-list li {
+    margin: 3rem auto;
+    padding: 3rem 2rem 2rem;
+  }
+
+  .custom-card-list h3 {
+    font-size: 1.75rem;
+    margin: 0 0 2rem;
+  }
+
+  .custom-card-list h3::before {
+    margin-right: 1.5rem;
+  }
+}
+
+
+
+</style>
+
+<div class="hizmetler-baslik">Tüm Hizmetlerimiz</div>
+
+<div class="category-container">
+  <a href="#test-olcum" class="category-kutusu">Makine Grubu Periyodik Kontrolleri</a>
+  <a href="#periyodik-kontrol" class="category-kutusu">Elektrik Grubu Periyodik Kontrollerir</a>
+  <a href="#bakim-hizmetleri" class="category-kutusu">Tesisat Grubu Periyodik Kontrollerir</a>
+  <a href="#is-guvenligi" class="category-kutusu">Fiziksel Etkenler Hijyen Laboratuvarı</a>
+  <a href="#danismanlik" class="category-kutusu">Kimyasal Etkenler Hijyen Laboratuvarı</a>
+  <a href="#egitim-hizmetleri" class="category-kutusu">Mühendislik Hizmetleri</a>
+</div>
+
+<ol class="custom-card-list" style="--length: 6" role="list">
+  <li id="test-olcum" style="--i: 1">
+    <h3>Makine Grubu Periyodik Kontrolleri</h3>
+    <div class="custom-hizmetler-container">
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/838" loading="lazy">
+            <div class="custom-hizmet-baslik">Gezer Köprülü Vinç</div>
+            <div class="custom-hizmet-aciklama">Gezer Köprülü Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/826" loading="lazy">
+            <div class="custom-hizmet-baslik">Pergel Vinç</div>
+            <div class="custom-hizmet-aciklama">Pergel Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/844" loading="lazy">
+            <div class="custom-hizmet-baslik">Portal Vinç</div>
+            <div class="custom-hizmet-aciklama">Portal Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/846" loading="lazy">
+            <div class="custom-hizmet-baslik">Monoray Vinç</div>
+            <div class="custom-hizmet-aciklama">Monoray Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/842" loading="lazy">
+            <div class="custom-hizmet-baslik">Mobil Vinç</div>
+            <div class="custom-hizmet-aciklama">Mobil Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/831" loading="lazy">
+            <div class="custom-hizmet-baslik">Döner Kollu Vinç</div>
+            <div class="custom-hizmet-aciklama">Döner Kollu Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/847" loading="lazy">
+            <div class="custom-hizmet-baslik">Kule Vinç</div>
+            <div class="custom-hizmet-aciklama">Kule Vinç periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001, TS EN...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/832" loading="lazy">
+            <div class="custom-hizmet-baslik">Forklift</div>
+            <div class="custom-hizmet-aciklama">Forklift periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001, TS EN...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/837" loading="lazy">
+            <div class="custom-hizmet-baslik">İstif Makinesi</div>
+            <div class="custom-hizmet-aciklama">İstif Makinesi periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Kriko</div>
+            <div class="custom-hizmet-aciklama">Kriko periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001, TS EN...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/845" loading="lazy">
+            <div class="custom-hizmet-baslik">Lift - Taşıt Kaldırma Donanımı</div>
+            <div class="custom-hizmet-aciklama">Lift periyodik kontrolleri TS...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/843" loading="lazy">
+            <div class="custom-hizmet-baslik">Transpalet</div>
+            <div class="custom-hizmet-aciklama">Transpalet periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001, TS EN...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/828" loading="lazy">
+            <div class="custom-hizmet-baslik">Caraskal</div>
+            <div class="custom-hizmet-aciklama">Caraskal periyodik kontrolleri TS ISO 12480-1, TS EN 15011, FEM 1.001, TS EN...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Sabit İniş mahalline Hizmet Veren Makine </div>
+            <div class="custom-hizmet-aciklama">Yük asansörü-Sabit İniş Hizmeti...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Sütunlu Çalışma Platformu</div>
+            <div class="custom-hizmet-aciklama">Sutünlu Çalışma Platformu periyodik kontrolleri FEM 1.001...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="https://odoo-184727-0.cloudclusters.net/web/image/836" loading="lazy">
+            <div class="custom-hizmet-baslik">İnşaat Asansörü</div>
+            <div class="custom-hizmet-aciklama">İnşaat Asansörü periyodik kontrolleri TS EN 12158-2+A1, TS EN 12159...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Yükseltilebilen Seyyar İş Platformu</div>
+            <div class="custom-hizmet-aciklama">Yükseltilen Seyyar İş Platfor...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Hareketli Rampa</div>
+            <div class="custom-hizmet-aciklama">Hareketli Rampa periyodik kontrolleri TS EN 12158-2+A1, TS EN 12159...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Zincirli Çektirme (Hubzug)</div>
+            <div class="custom-hizmet-aciklama">Zincirli Çektirme periyodik kontrolleri TS EN 12158-2+A1, TS EN 12159...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Halatlı Çektirme (Trifor)</div>
+            <div class="custom-hizmet-aciklama">Halatlı Rampa periyodik kontrolleri TS EN 12158-2+A1, TS EN 12159...</div>
+          </div>
+        </a>
+      <a href="https://example.com/detaylar/portal-vinc" class="custom-hizmet-link">
+          <div class="custom-hizmet-kutusu">
+            <img src="" loading="lazy">
+            <div class="custom-hizmet-baslik">Konveyör Bant Sistemi</div>
+            <div class="custom-hizmet-aciklama">Konveyör periyodik kontrolleri TS EN 12158-2+A1, TS EN 12159...</div>
+          </div>
+        </a>
+    </div>
+  </li>
+
+  <li id="periyodik-kontrol" style="--i: 2">
+    <h3>Elektrik Grubu Periyodik Kontrolleri</h3>
+    <div class="custom-hizmetler-container">
+      <div class="custom-hizmet-kutusu">
+        <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+        <div class="custom-hizmet-baslik">Hidrolik Pres</div>
+        <div class="custom-hizmet-aciklama">Hidrolik Pres Periyodik Kontrol Muayenesi</div>
+      </div>
+    </div>
+  </li>
+
+  <li id="bakim-hizmetleri" style="--i: 3">
+    <h3>Tesisat Grubu Periyodik Kontrolleri</h3>
+    <div class="custom-hizmetler-container">
+      <div class="custom-hizmet-kutusu">
+        <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+        <div class="custom-hizmet-baslik">Kazan Bakımı</div>
+        <div class="custom-hizmet-aciklama">Endüstriyel kazan bakım hizmetleri</div>
+      </div>
+    </div>
+  </li>
+
+  <li id="is-guvenligi" style="--i: 4">
+    <h3>Fiziksel Etkenler İş Hijyeni Laboratuvarı</h3>
+    <div class="custom-hizmetler-container">
+      <div class="custom-hizmet-kutusu">
+        <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+        <div class="custom-hizmet-baslik">İş Sağlığı ve Güvenliği</div>
+        <div class="custom-hizmet-aciklama">İSG hizmetleri</div>
+      </div>
+    </div>
+  </li>
+
+  <li id="danismanlik" style="--i: 5">
+    <h3>kimyasal Etkenler İş Hijyeni Laboratuvarı</h3>
+    <div class="custom-hizmetler-container">
+      <div class="custom-hizmet-kutusu">
+        <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+        <div class="custom-hizmet-baslik">Endüstriyel Danışmanlık</div>
+        <div class="custom-hizmet-aciklama">Endüstriyel süreç danışmanlığı</div>
+      </div>
+    </div>
+  </li>
+
+  <li id="egitim-hizmetleri" style="--i: 6">
+    <h3>Mühendislik Hizmetleri</h3>
+    <div class="custom-hizmetler-container">
+      <div class="custom-hizmet-kutusu">
+        <img src="https://via.placeholder.com/300x200" alt="Hizmet Resmi" loading="lazy">
+        <div class="custom-hizmet-baslik">Teknik Eğitim</div>
+        <div class="custom-hizmet-aciklama">Teknik eğitim ve gelişim hizmetleri</div>
+      </div>
+    </div>
+  </li>
+</ol>
