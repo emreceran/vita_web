@@ -233,7 +233,7 @@
                         <!-- Card 1 -->
                         <div class="col">
 
-                            <a href="related_product.website_url" class="custom-hizmet-link">
+                            <a t-att-href="related_product.website_url" class="custom-hizmet-link">
                                 <div class="custom-hizmet-kutusu">
                                     <img t-att-src="website.image_url(related_product, 'img_2')" class="card-img-top w-100" alt="Gezici Köprülü Vinç"/>
                                     <div class="custom-hizmet-baslik text-left">
