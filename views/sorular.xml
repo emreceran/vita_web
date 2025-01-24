@@ -52,7 +52,9 @@
                 <t t-if="product.faq_question1">
                     <div class="faq-item">
                         <div class="faq-question" >
-                        <t t-esc="product.faq_question1" />
+                        <h3 style="font-size:20px">
+                            <t t-esc="product.faq_question1" />
+                        </h3>
                         </div>
                         <div class="faq-answer" t-field="product.faq_answer1"></div>
                     </div>
