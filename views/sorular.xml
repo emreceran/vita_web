@@ -51,7 +51,9 @@
                 <!-- Soru ve Cevap 1 -->
                 <t t-if="product.faq_question1">
                     <div class="faq-item">
-                        <div class="faq-question" t-field="product.faq_question1"></div>
+                        <div class="faq-question" >
+                        <t t-esc="product.faq_question1" />
+                        </div>
                         <div class="faq-answer" t-field="product.faq_answer1"></div>
                     </div>
                 </t>
@@ -59,7 +61,9 @@
                 <!-- Soru ve Cevap 2 -->
                 <t t-if="product.faq_question2">
                     <div class="faq-item">
-                        <div class="faq-question" t-field="product.faq_question2"></div>
+                        <div class="faq-question" >
+                        <t t-esc="product.faq_question2" />
+                        </div>
                         <div class="faq-answer" t-field="product.faq_answer2"></div>
                     </div>
                 </t>
@@ -67,7 +71,9 @@
                 <!-- Soru ve Cevap 3 -->
                 <t t-if="product.faq_question3">
                     <div class="faq-item">
-                        <div class="faq-question" t-field="product.faq_question3"></div>
+                         <div class="faq-question" >
+                        <t t-esc="product.faq_question3" />
+                        </div>
                         <div class="faq-answer" t-field="product.faq_answer3"></div>
                     </div>
                 </t>
