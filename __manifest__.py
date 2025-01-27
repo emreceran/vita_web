@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'website', 'website_sale', 'vita_dataeski', 'website_blog'],
+    'depends': ['base', 'web', 'website', 'website_sale', 'vita_data', 'website_blog'],
     # 'assets': {
     #         'web.assets_frontend': [
     #             '/vita_header/static/src/css/header.css',
