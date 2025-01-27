@@ -76,17 +76,17 @@
           height: 70px;
           display: flex;
       text-align:left;
-<!--          align-items: start;-->
+                                    <!--          align-items: start;-->
           border-radius: 50px;
-<!--          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);-->
+                                    <!--          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);-->
           z-index: 10001;
           }
 
           .side-menu ul li .box:hover {
           background-color: #05144d;
           color: #fff;
-<!--          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);-->
-<!--          border: 1px solid #b44454;-->
+                                    <!--          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);-->
+      <!--          border: 1px solid #b44454;-->
           }
 
           .box {
@@ -125,13 +125,14 @@
           font-size: 16px;
           color: #b44454;
           line-height: 1.2;
-      text-align:left;
-          }
+          text-align:left;
+          } 
 
           /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
           .side-menu ul li .box:hover .box-text span,
           .side-menu ul li .box:hover .box-text small {
-          color: #fff; /* Hover sırasında tüm yazılar beyaz */
+          color: #fff !important; /* Hover sırasında tüm yazılar beyaz */
+          font-weight: bold;
           }
 
           /* Carousel */
@@ -232,8 +233,8 @@
 
 
           color: white;
-<!--          font-weight: bold;-->
-<!--          z-index: 3;-->
+                                    <!--          font-weight: bold;-->
+      <!--          z-index: 3;-->
           opacity: 1; /* Başlangıçta görünmez */
           transition: opacity 0.3s ease;
 
@@ -249,12 +250,12 @@
   align-items: center; /* Dikey ortalama */
           }
 
-<!--          .carousel-subtitle {-->
-<!--          margin-top: 5px;-->
-<!--          font-size: 12px;-->
-<!--          text-align: center;-->
-<!--        bottom:20%;-->
-<!--          }-->
+                                    <!--          .carousel-subtitle {-->
+      <!--          margin-top: 5px;-->
+      <!--          font-size: 12px;-->
+      <!--          text-align: center;-->
+      <!--        bottom:20%;-->
+      <!--          }-->
 
           .carousel-item:hover .carousel-title,
           .carousel-item:hover .carousel-subtitle {
@@ -529,7 +530,7 @@
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-aydnlatma-olcumu-102">
                     <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy" />
-                    <div class="carousel-title" >Aydınlatma Ölçümü</div>
+                    <div class="carousel-title">Aydınlatma Ölçümü</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -557,7 +558,7 @@
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-el-kol-tum-vucut-titresim-maruziyeti-olcumu-106">
                     <img src="https://odoo-184727-0.cloudclusters.net/web/image/2421" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title" >El Kol Tüm Vücut Titreşim Ölçümü</div>
+                    <div class="carousel-title">El Kol Tüm Vücut Titreşim Ölçümü</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -571,7 +572,7 @@
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-toplam-toz-numune-alma-ve-analiz-108">
                     <img src="https://odoo-184727-0.cloudclusters.net/web/image/2410" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title" >Toplam Toz Numune Alma ve Analizi</div>
+                    <div class="carousel-title">Toplam Toz Numune Alma ve Analizi</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -585,7 +586,7 @@
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-gaz-ve-buhar-konsantrasyon-olcumu-110">
                     <img src="https://odoo-184727-0.cloudclusters.net/web/image/2402" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title" >Gaz ve Buhar Konsantrasyon Ölçümü</div>
+                    <div class="carousel-title">Gaz ve Buhar Konsantrasyon Ölçümü</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -599,7 +600,7 @@
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-agr-metal-numune-alma-ve-analiz-112">
                     <img src="https://odoo-184727-0.cloudclusters.net/web/image/2408" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title" >Ağır Metal Numune Alma ve Analizi</div>
+                    <div class="carousel-title">Ağır Metal Numune Alma ve Analizi</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -629,7 +630,7 @@
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/muhendislik-hizmetleri-patlamadan-korunma-dokumantasyonu-115">
                     <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy" />
-                    <div class="carousel-title" >Patlamadan Korunma Dökümantasyonu</div>
+                    <div class="carousel-title">Patlamadan Korunma Dökümantasyonu</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -736,6 +737,7 @@
     <script type="text/javascript">
 
       document.addEventListener("DOMContentLoaded", function () {
+          console.log("girdi")
           const sideMenu = document.querySelector(".side-menu");
           const targetElement1 = document.getElementById("o_wblog_blog_top");
           const targetElement2 = document.getElementById("o_wblog_post_top");
@@ -773,7 +775,7 @@
             const topPosition = top_element.getBoundingClientRect().top;
             const sideTopPosition = sideMenu.getBoundingClientRect().top;
             const offsetY = topPosition - sideTopPosition - 20;
-            sideMenu.style.marginTop = ${offsetY}px;
+            sideMenu.style.marginTop = `${offsetY}px`;
           }
 
 
@@ -802,10 +804,6 @@
                     sideMenu.style.transform = `translateY(${-scrollY}px)`;
                 }
               }
-
-
-
-
 
               // Footer ile çakışma kontrolü (Bu kısım değişmedi)
               if (isOverlap(sideMenu, bottomElement)) {
