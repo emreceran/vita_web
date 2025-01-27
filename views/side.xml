@@ -76,16 +76,16 @@
           height: 70px;
           display: flex;
       text-align:left;
-                                    <!--          align-items: start;-->
+                                                                                                                                                                                                                                          <!--          align-items: start;-->
           border-radius: 50px;
-                                    <!--          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);-->
+                                                                                                                                                                                                                                          <!--          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);-->
           z-index: 10001;
           }
 
           .side-menu ul li .box:hover {
           background-color: #05144d;
           color: #fff;
-                                    <!--          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);-->
+                                                                                                                                                                                                                                          <!--          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);-->
       <!--          border: 1px solid #b44454;-->
           }
 
@@ -104,20 +104,20 @@
           }
 
           .box-text {
-          margin-left: 2px;
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: left;
-          text-align: center;
-      margin-left:20px;
+            margin-left: 2px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            text-align: center;
+            margin-left:20px;
           }
 
           .box-text small {
-          font-size: 12px;
-          color: #666;
-          margin-top: 2px;
-      text-align:left;
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+            text-align:left;
 
           }
 
@@ -126,20 +126,20 @@
           color: #b44454;
           line-height: 1.2;
           text-align:left;
-          } 
+          font-weight: bold;
+          }
 
           /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
           .side-menu ul li .box:hover .box-text span,
           .side-menu ul li .box:hover .box-text small {
           color: #fff !important; /* Hover sırasında tüm yazılar beyaz */
-          font-weight: bold;
           }
 
           /* Carousel */
           .carousel {
           display: none;
           position: absolute;
-          top: 50%; /* Ortalamak için %50 */
+          top: 160%; /* topdan hizalamak için*/
           left: 100%;
           width: 760px; /* 190px * 4 = 760px (4 item göstermek için) */
           height: 220px;
@@ -233,7 +233,7 @@
 
 
           color: white;
-                                    <!--          font-weight: bold;-->
+                                                                                                                                                                                                                                          <!--          font-weight: bold;-->
       <!--          z-index: 3;-->
           opacity: 1; /* Başlangıçta görünmez */
           transition: opacity 0.3s ease;
@@ -246,16 +246,10 @@
         padding:5px;
 
          display: flex; /* Flexbox özelliğini etkinleştirir */
-  justify-content: center; /* Yatay ortalama */
-  align-items: center; /* Dikey ortalama */
-          }
+      justify-content: center; /* Yatay ortalama */
+      align-items: center; /* Dikey ortalama */
+              }
 
-                                    <!--          .carousel-subtitle {-->
-      <!--          margin-top: 5px;-->
-      <!--          font-size: 12px;-->
-      <!--          text-align: center;-->
-      <!--        bottom:20%;-->
-      <!--          }-->
 
           .carousel-item:hover .carousel-title,
           .carousel-item:hover .carousel-subtitle {
@@ -617,11 +611,11 @@
           <li>
             <div class="box">
               <div class="box-img">
-                <img src="https://odoo-184727-0.cloudclusters.net/web/image/669-2124dc59/laboratory.webp" alt="Placeholder Image" loading="lazy" />
+                <img src="https://odoo-184727-0.cloudclusters.net/web/image/4860-f6245a48/engineer-281.svg" alt="Placeholder Image" loading="lazy" />
               </div>
               <div class="box-text">
                 <span>MÜHENDİSLİK</span>
-                <small>HİZMETLERİ</small>
+                <small>Hizmetleri</small>
               </div>
             </div>
 
@@ -629,8 +623,9 @@
               <div class="carousel-inner">
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/muhendislik-hizmetleri-patlamadan-korunma-dokumantasyonu-115">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy" />
-                    <div class="carousel-title">Patlamadan Korunma Dökümantasyonu</div>
+                                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy" />
+
+                      <div class="carousel-title">Patlamadan Korunma Dökümantasyonu</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -643,15 +638,16 @@
                 </div>
                 <div class="carousel-item">
                   <a href="https://odoo-184727-0.cloudclusters.net/shop/category/muhendislik-hizmetleri-tesisat-proje-degerlendirme-117">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2414" alt="Image 3" loading="lazy" />
+                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy"/>
                     <div class="carousel-title">Tesisat Proje Değerlendirme</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
                 <div class="carousel-item">
                   <a href="#">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Gelecek</div>
+                                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy" />
+
+                      <div class="carousel-title">Gelecek</div>
                   </a>
                   <div class="item-overlay"></div>
                 </div>
@@ -662,21 +658,21 @@
         </ul>
         <div class="side_wp py-5 bg-light text-center rounded-3">
           <div class="h1 text-danger">
-            <i class="fa fa-whatsapp " aria-hidden="true"></i>
+            <a class="text-danger p-0 m-0" href="https://wa.me/905325219786">
+              <i class="fa fa-whatsapp " aria-hidden="true"></i>
+            </a>
           </div>
           <div class="h5 text-muted">
             <span class="fw-bold text-mute">VİTA</span> Destek ?
           </div>
           <div class="h4 p-0 m-0">
-            <a class="text-danger p-0 m-0" href="https://wa.me/905325219786">0532 521 97 86</a>
+            <a class="text-danger p-0 m-0" href="tel:+903122861636">0312 286 16 36</a>
           </div>
         </div>
       </div>
       <div class="overlay"></div>
 
     </div>
-
-
 
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function() {
@@ -719,14 +715,14 @@
                   carouselInner.style.transition = 'none';
                   currentIndex = 0;
                   const resetOffset = -currentIndex * 190;
-                  carouselInner.style.transform = `translateX(${resetOffset}px)`;
+                  carouselInner.style.transform = translateX(${resetOffset}px);
 
                   setTimeout(() =&gt; {
                       carouselInner.style.transition = 'transform 0.5s ease';
                   }, 0);
                   } else {
                   const offset = -currentIndex * 190;
-                  carouselInner.style.transform = `translateX(${offset}px)`;
+                  carouselInner.style.transform = translateX(${offset}px);
                   }
               }, 3000);
               });
@@ -737,13 +733,13 @@
     <script type="text/javascript">
 
       document.addEventListener("DOMContentLoaded", function () {
-          console.log("girdi")
           const sideMenu = document.querySelector(".side-menu");
           const targetElement1 = document.getElementById("o_wblog_blog_top");
           const targetElement2 = document.getElementById("o_wblog_post_top");
           const targetElement3 = document.getElementById("products_grid");
           const targetElement4 = document.getElementById("product_detail");
-          let top_element; let lm=1;
+          let top_element;
+          let lm=0; let hasExecuted = false;
           const bottomElement = document.getElementById("bottom");
           const ScrollElement = document.getElementById("wrapwrap");
           function getActiveTarget(target1, target2, target3, target4) {
@@ -752,6 +748,7 @@
                   return target1; // Eğer target1 mevcutsa onu döndür
               } else if (target2) {
                   top_element = document.getElementById("o_wblog_post_content");
+                  lm = 30;
                   return target2; // Eğer target2 mevcutsa onu döndür
               } else if (target3) {
                   top_element = document.getElementById("red-cards");
@@ -775,7 +772,7 @@
             const topPosition = top_element.getBoundingClientRect().top;
             const sideTopPosition = sideMenu.getBoundingClientRect().top;
             const offsetY = topPosition - sideTopPosition - 20;
-            sideMenu.style.marginTop = `${offsetY}px`;
+            sideMenu.style.marginTop = ${offsetY}px;
           }
 
 
@@ -795,13 +792,13 @@
               if (activeTarget == targetElement2 || activeTarget == targetElement1)
               {
                 const targetRect = activeTarget.getBoundingClientRect();
-                console.log(targetRect.bottom)
                 // Hedef element görünüyorsa
                 if (targetRect.bottom &gt; 0) {
-                    console.log("0altı")
                     const scrollY = ScrollElement.scrollTop; // Scroll miktarını al
-                    console.log(scrollY)
-                    sideMenu.style.transform = `translateY(${-scrollY}px)`;
+                    sideMenu.style.transform = translateY(${-scrollY}px); hasExecuted=false;
+                }else if(!hasExecuted){
+                  sideMenu.style.marginTop = ${45}px; hasExecuted=true;
+                  console.log("ters");
                 }
               }
 
