@@ -1,6 +1,5 @@
 <odoo>
     <template id="product_categories" name="Product Categories">
-
         <style>
             /* Tüm Hizmetler başlığı */
             .hizmetler-baslik {
@@ -130,24 +129,15 @@
             position: relative; /* Barın üstünde görünmesi için */
             z-index: 2; /* Başlığın barın üzerinde görünmesi için */
             }
-
-            /* Hizmetler grid yapısı - Tek satırda 5 sütun */
-            .custom-hizmetler-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 sütun */
-            gap: 10px;
-            padding: 20px;
-            max-width: 100%;
-            margin: 0 auto;
+            .services_link:hover{
+            text-decoration:none;
             }
-
             .custom-hizmet-kutusu {
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s ease;
-            height: 25vh;
 
             }
 
@@ -162,153 +152,57 @@
             }
 
             .custom-hizmet-baslik {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            margin: 10px;
             color: #333;
-            height: 40px;
-            text-align:left !important;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* Satır sayısını belirler */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-
+            display: -webkit-box; /* Çoklu satır kısıtlaması için gerekli */
+            -webkit-line-clamp: 1; /* Gösterilecek maksimum satır sayısı */
+            -webkit-box-orient: vertical; /* Dikey hizalama */
+            overflow: hidden; /* Taşan içeriği gizler */
+            text-overflow: ellipsis; /* Taşan içeriğe üç nokta ekler */
             }
 
             .custom-hizmet-aciklama {
-            font-size: 10px;
-            margin: 0 10px 10px;
-            color: #666;
+            font-size: 10px; /* Yazı boyutu */
+            color: #666; /* Yazı rengi */
+            overflow: hidden;
             }
-
-            /* Responsive Ayarlar */
-            @media (max-width: 1024px) {
-            .custom-hizmetler-container {
-            grid-template-columns: repeat(3, 1fr); /* Tabletler için 3 sütun */
-            }
-            }
-
-            @media (max-width: 768px) {
-            .custom-hizmetler-container {
-            grid-template-columns: repeat(2, 1fr); /* Küçük ekranlar için 2 sütun */
-            }
-            }
-
-            @media (max-width: 480px) {
-            .custom-hizmetler-container {
-            grid-template-columns: 1fr; /* Mobil ekranlar için 1 sütun */
-            }
-            }
-
-            @media (min-width: 40em) {
-            .custom-card-list li {
-            margin: 3rem auto;
-            padding: 3rem 2rem 2rem;
-            }
-
-            .custom-card-list h3 {
-            font-size: 1.75rem;
-            margin: 0 0 2rem;
-            }
-
-            .custom-card-list h3::before {
-            margin-right: 1.5rem;
-            }
-            }
-
-
-
-
         </style>
 
         <div class="hizmetler-baslik">Tüm Hizmetlerimiz</div>
+        <ol class="custom-card-list w-100 " style="--length: 6" role="list">
+            <li id="test-olcum" class="p-1 w-100 mt-2" style="">
+                <div class="container-fluid my-5" style="">
+                    <div class="row px-5 g-3">
+                        <t t-set="product_model" t-value="env['product.template']"/>
+                        <t t-set="random_products" t-value="product_model.get_random_products( product.id, 15)"/>
+                        <t t-foreach="random_products" t-as="related_product">
+                            <div class="col-12 col-md-6 col-xl-4 col-xxl-3" style="height: 200px ;">
+                                <a t-att-href="related_product.website_url" class="services_link h-100">
+                                    <div class="custom-hizmet-kutusu h-100">
+                                        <div class="h-50">
+                                            <img t-att-src="website.image_url(related_product, 'img_2')" class="img-fluid w-100 h-100 object-fit-cover" alt="..."/>
+                                        </div>
+                                        <div class="custom-hizmet-baslik p-2 h-25 d-flex align-items-center justify-content-center p-1 text-center">
+                                            <t t-if="related_product and related_product.name">
+                                                <t t-esc="related_product.name[:30] + ('...' if len(related_product.name) > 30 else '')"></t>
+                                            </t>
+                                            <t t-else="...">...</t>
+                                        </div>
+                                        <div class="custom-hizmet-aciklama p-2 h-25">
+                                            <t t-if="related_product and related_product.description_sale">
+                                                <t t-esc="related_product.description_sale[:70] + ('...' if len(related_product.description_sale) > 70 else '')"></t>
+                                            </t>
+                                            <t t-else="...">...</t>
+                                        </div>
 
-        <ol class="custom-card-list" style="--length: 6" role="list">
-            <li id="test-olcum" style="">
-                <div class="custom-hizmetler-container">
-
-                    <t t-set="product_model" t-value="env['product.template']"/>
-                    <t t-set="random_products" t-value="product_model.get_random_products( product.id, 15)"/>
-                    <t t-foreach="random_products" t-as="related_product">
-                        <!-- Card 1 -->
-                        <div class="col">
-
-                            <a t-att-href="related_product.website_url" class="custom-hizmet-link">
-                                <div class="custom-hizmet-kutusu">
-                                    <img t-att-src="website.image_url(related_product, 'img_2')" class="card-img-top w-100" alt="Gezici Köprülü Vinç"/>
-                                    <div class="custom-hizmet-baslik text-left">
-                                        <t t-esc="related_product.name" />
                                     </div>
-
-                                    <!--                                    <div class="custom-hizmet-aciklama"><t t-esc="related_product.description_sale" />.</div>-->
-
-                                </div>
-                            </a>
-                        </div>
-                    </t>
-
-
-
-
+                                </a>
+                            </div>
+                        </t>
+                    </div>
                 </div>
             </li>
-
         </ol>
-
-
     </template>
 </odoo>
-
-
-
-
-        <!--  <style>-->
-        <!--            .servicess_container{-->
-        <!--            box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);-->
-        <!--            border-radius: 0.5em;-->
-        <!--&lt;!&ndash;            border-top: 1em solid hsl(0, 71%, 43%) !important;&ndash;&gt;-->
-        <!--&lt;!&ndash;            background: linear-gradient(to right, #eb1d0e, #e6584e);&ndash;&gt;-->
-
-        <!--            }-->
-
-        <!--            .card {-->
-        <!--            height: 11rem;;-->
-        <!--            border-radius: 10px;-->
-        <!--            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);-->
-        <!--            transition: transform 0.2s ease, box-shadow 0.2s ease;-->
-        <!--            text-decoration: none;-->
-        <!--            }-->
-
-        <!--            .card:hover {-->
-        <!--            transform: scale(1.05);-->
-        <!--            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);-->
-        <!--            text-decoration: none;-->
-        <!--            }-->
-
-        <!--            .card img {-->
-        <!--            height: 5.5rem;-->
-        <!--            object-fit: cover;-->
-        <!--            }-->
-
-
-
-
-        <!--        </style>-->
-        <!--        <div class="container bg-light servicess_container mt-5 p-5">-->
-        <!--            <h2 class="text-start fw-bold fs-3 mb-5">Diğer Hizmetlerimiz</h2>-->
-        <!--            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3 p-3">-->
-        <!--                <t t-set="product_model" t-value="env['product.template']"/>-->
-        <!--                <t t-set="random_products" t-value="product_model.get_random_products( product.id, 15)"/>-->
-        <!--                <t t-foreach="random_products" t-as="related_product">-->
-        <!--                    &lt;!&ndash; Card 1 &ndash;&gt;-->
-        <!--                    <div class="col">-->
-        <!--                        <a t-att-href="related_product.website_url" class="card">-->
-        <!--                            <img t-att-src="website.image_url(related_product, 'img_2')" class="card-img-top w-100" alt="Gezici Köprülü Vinç"/>-->
-        <!--                            <div class="card-body">-->
-        <!--                                <t t-esc="related_product.name" />-->
-        <!--                            </div>-->
-        <!--                        </a>-->
-        <!--                    </div>-->
-        <!--                </t>-->
-        <!--            </div>-->
-        <!--        </div>-->
