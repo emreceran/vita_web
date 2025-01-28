@@ -51,8 +51,6 @@
               font-size: small;
           }
 
-
-
           .side-menu ul {
           list-style-type: none;
           padding: 0;
@@ -75,18 +73,13 @@
           transition: background-color 0.3s, color 0.3s;
           height: 70px;
           display: flex;
-      text-align:left;
-                                                                                                                                                                                                                                          <!--          align-items: start;-->
+          text-align:left;
           border-radius: 50px;
-                                                                                                                                                                                                                                          <!--          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);-->
           z-index: 10001;
           }
-
           .side-menu ul li .box:hover {
           background-color: #05144d;
           color: #fff;
-                                                                                                                                                                                                                                          <!--          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);-->
-      <!--          border: 1px solid #b44454;-->
           }
 
           .box {
@@ -127,7 +120,7 @@
           line-height: 1.2;
           text-align:left;
           font-weight: bold;
-          }
+          } 
 
           /* Hover sırasında tüm yazıların beyaz olması ve boyutlarının değişmemesi */
           .side-menu ul li .box:hover .box-text span,
@@ -168,7 +161,7 @@
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
           overflow: hidden; /* Overlay'in taşmaması için */
           transition: transform 0.3s ease;
-        border-right: 5px solid white;
+          border-right: 5px solid white;
           }
 
           .carousel-item img {
@@ -176,6 +169,12 @@
           height: 220px; /* Yükseklik 220px */
           object-fit: cover;
           transition: transform 0.3s ease; /* Hover sırasında zoom efekti için */
+          }
+
+          .carousel-item .item-overlay a{
+              display:block;
+              width:100%; 
+              height:100%;
           }
 
           .carousel-item::before {
@@ -218,37 +217,24 @@
 
           .carousel-title,
           .carousel-subtitle {
-
-          position: absolute;
-          left:  0;
-        width: 100%;
-        bottom:0;
-          height: 25%;
-
-          font-family: 'Roboto', sans-serif !important;
-         text-align: center;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Gölge ekleniyor */
-
-          font-size: 14px;
-
-
-          color: white;
-                                                                                                                                                                                                                                          <!--          font-weight: bold;-->
-      <!--          z-index: 3;-->
-          opacity: 1; /* Başlangıçta görünmez */
-          transition: opacity 0.3s ease;
-
-
-
-
-
-        background: #0a217d;
-        padding:5px;
-
-         display: flex; /* Flexbox özelliğini etkinleştirir */
-      justify-content: center; /* Yatay ortalama */
-      align-items: center; /* Dikey ortalama */
-              }
+            position: absolute;
+            left:  0;
+            width: 100%;
+            bottom:0;
+            height: 25%;
+            font-family: 'Roboto', sans-serif !important;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Gölge ekleniyor */
+            font-size: 14px;
+            color: white;
+            opacity: 1; /* Başlangıçta görünmez */
+            transition: opacity 0.3s ease;
+            background: #0a217d;
+            padding:5px;
+            display: flex; /* Flexbox özelliğini etkinleştirir */
+            justify-content: center; /* Yatay ortalama */
+            align-items: center; /* Dikey ortalama */
+          }
 
 
           .carousel-item:hover .carousel-title,
@@ -310,12 +296,6 @@
               gap: 30px; /* Kırmızı kutu ve kartlar arasındaki boşluk */
               align-items: flex-start;
           }
-
-
-
-
-
-
     </style>
     <div class="custom-container">
       <div id="side_menu" class="side-menu mobillisil">
@@ -334,53 +314,66 @@
             <div class="carousel">
               <div class="carousel-inner ">
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-kaldrma-iletme-ekipmanlar-81">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/684-f8093530/Kald%C4%B1rma%20Ekipmanlar%C4%B1%20%284%29.webp" alt="Image 1" loading="lazy"/>
-                    <div class="carousel-title">Kaldırma Ekipmanları</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/684-f8093530/Kald%C4%B1rma%20Ekipmanlar%C4%B1%20%284%29.webp" alt="Image 1" loading="lazy"/>
+                  <div class="carousel-title">Kaldırma Ekipmanları</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-kaldrma-iletme-ekipmanlar-81">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-basncl-kaplar-82">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/687-c0e90f28/bas%C4%B1n%C3%A7l%C4%B1.png" alt="Image 2" loading="lazy"/>
-                    <div class="carousel-title">Basınçlı Kaplar</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/687-c0e90f28/bas%C4%B1n%C3%A7l%C4%B1.png" alt="Image 2" loading="lazy"/>
+                  <div class="carousel-title">Basınçlı Kaplar</div>
+
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-basncl-kaplar-82">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-makine-tezgahlar-83">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/690-cbf6e543/makine%20tezgahlar%C4%B1.png" alt="Image 3" loading="lazy"/>
-                    <div class="carousel-title">Makine Tezgahları</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/690-cbf6e543/makine%20tezgahlar%C4%B1.png" alt="Image 3" loading="lazy"/>
+                  <div class="carousel-title">Makine Tezgahları</div>
+
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-makine-tezgahlar-83">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-is-makineleri-84">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/685-852126de/i%C5%9F%20makineleri.png" alt="Image 4" loading="lazy"/>
-                    <div class="carousel-title">İş Makineleri</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/685-852126de/i%C5%9F%20makineleri.png" alt="Image 4" loading="lazy"/>
+                  <div class="carousel-title">İş Makineleri</div>
+
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-is-makineleri-84">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-endustriyel-raf-sistemleri-85">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/686-1c27d604/raf%20sistemleri.png" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Endüstriyel Raf Sistemleri</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/686-1c27d604/raf%20sistemleri.png" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Endüstriyel Raf Sistemleri</div>
+
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-endustriyel-raf-sistemleri-85">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-endustriyel-kaplar-86">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/688-301080de/end%C3%BCstriyel%20kap%C4%B1lar.png" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Endüstriyel Kapılar</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/688-301080de/end%C3%BCstriyel%20kap%C4%B1lar.png" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Endüstriyel Kapılar</div>
+
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-endustriyel-kaplar-86">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-makine-grubu-kanca-alt-kaldrma-ekipmanlar-87">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/689-973b0c30/kanca%20alt%C4%B1.png" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Kanca Altı Kaldırma Ekipmanları</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/689-973b0c30/kanca%20alt%C4%B1.png" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Kanca Altı Kaldırma Ekipmanları</div>
+
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-makine-grubu-kanca-alt-kaldrma-ekipmanlar-87">
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -399,67 +392,85 @@
             <div class="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-topraklama-olcumleri-88">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/922" alt="Image 1" loading="lazy"/>
-                    <div class="carousel-title">Topraklama Ölçümleri</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/922" alt="Image 1" loading="lazy"/>
+                  <div class="carousel-title">Topraklama Ölçümleri</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-topraklama-olcumleri-88">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-elektrik-ic-tesisat-uygunluk-89">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy"/>
-                    <div class="carousel-title">Elektrik İç Tesisat Uygunluk</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy"/>
+                  <div class="carousel-title">Elektrik İç Tesisat Uygunluk</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-elektrik-ic-tesisat-uygunluk-89">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-paratoner-yldrmdan-korunma-90">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/920" alt="Image 3" loading="lazy"/>
-                    <div class="carousel-title">Paratoner Yıldırımdan Korunma</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/920" alt="Image 3" loading="lazy"/>
+                  <div class="carousel-title">Paratoner Yıldırımdan Korunma</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-paratoner-yldrmdan-korunma-90">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-kacak-artk-akm-rolesi-92">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/911" alt="Image 4" loading="lazy"/>
-                    <div class="carousel-title">Kaçak Artık Akım Rolesi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/911" alt="Image 4" loading="lazy"/>
+                  <div class="carousel-title">Kaçak Artık Akım Rolesi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-kacak-artk-akm-rolesi-92">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-paratoner-etki-alan-hesab-cizimi-91">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/909" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Paratoner Etki Alanı Hesabı Çizimi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/909" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Paratoner Etki Alanı Hesabı Çizimi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-paratoner-etki-alan-hesab-cizimi-91">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-pano-gorsel-fonksiyon-93">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/914" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Pano Görsel-Fonksiyon</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/914" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Pano Görsel-Fonksiyon</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-pano-gorsel-fonksiyon-93">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-pano-termografi-94">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/910" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Pano Termografi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/910" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Pano Termografi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-pano-termografi-94">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-jenerator-95">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/913" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Jeneratör</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/913" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Jeneratör</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-jenerator-95">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-elektrik-grubu-katodik-koruma-olcumleri-96">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/908" alt="Image 5" loading="lazy"/>
-                    <div class="carousel-title">Katodik Koruma Ölçümleri</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/908" alt="Image 5" loading="lazy"/>
+                  <div class="carousel-title">Katodik Koruma Ölçümleri</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-elektrik-grubu-katodik-koruma-olcumleri-96">
+                    </a>
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -478,32 +489,40 @@
             <div class="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-tesisat-grubu-yangn-tesisat-97">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2422" alt="Image 1" loading="lazy" />
-                    <div class="carousel-title">Yangın Tesisatı</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2422" alt="Image 1" loading="lazy" />
+                  <div class="carousel-title">Yangın Tesisatı</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-tesisat-grubu-yangn-tesisat-97">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-tesisat-grubu-havalandrma-tesisat-98">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2411" alt="Image 2" loading="lazy" />
-                    <div class="carousel-title">Havalandırma Tesisatı</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2411" alt="Image 2" loading="lazy" />
+                  <div class="carousel-title">Havalandırma Tesisatı</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-tesisat-grubu-havalandrma-tesisat-98">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-tesisat-grubu-alglama-alarm-sistemleri-99">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2407" alt="Image 3" loading="lazy" />
-                    <div class="carousel-title">Algılama Alarm Sistemleri</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2407" alt="Image 3" loading="lazy" />
+                  <div class="carousel-title">Algılama Alarm Sistemleri</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/periyodik-kontroller-tesisat-grubu-alglama-alarm-sistemleri-99">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="#">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2432" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Paratoner Tesisatı</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2432" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Paratoner Tesisatı</div>
+                  <div class="item-overlay">
+                    <a href="/shop/paratoner-tesisat-proje-degerlendirme-211?category=77">
+                    </a>
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -522,88 +541,112 @@
             <div class="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-aydnlatma-olcumu-102">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy" />
-                    <div class="carousel-title">Aydınlatma Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/671-9aa36127/plumbing.webp" alt="Image 1" loading="lazy" />
+                  <div class="carousel-title">Aydınlatma Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-aydnlatma-olcumu-102">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-kisisel-gurultu-maruziyeti-olcumu-103">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2417" alt="Image 2" loading="lazy" />
-                    <div class="carousel-title">Kişisel Gürültü Maruziyeti Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Kişisel Gürültü Maruziyeti Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-kisisel-gurultu-maruziyeti-olcumu-103">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-ortam-gurultu-olcumu-104">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2414" alt="Image 3" loading="lazy" />
-                    <div class="carousel-title">Ortam Gürültü Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2414" alt="Image 3" loading="lazy" />
+                  <div class="carousel-title">Ortam Gürültü Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-ortam-gurultu-olcumu-104">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-termal-konfor-olcumu-105">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Termal Konfor Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2417" alt="Image 2" loading="lazy" />
+                  <div class="carousel-title">Termal Konfor Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-termal-konfor-olcumu-105">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-el-kol-tum-vucut-titresim-maruziyeti-olcumu-106">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2421" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">El Kol Tüm Vücut Titreşim Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2421" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">El Kol Tüm Vücut Titreşim Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-el-kol-tum-vucut-titresim-maruziyeti-olcumu-106">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-elektromanyetik-alan-olcumu-107">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2415" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Elektromanyetik Alan Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2415" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Elektromanyetik Alan Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-fiziksel-etkenler-elektromanyetik-alan-olcumu-107">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-toplam-toz-numune-alma-ve-analiz-108">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2410" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Toplam Toz Numune Alma ve Analizi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2410" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Toplam Toz Numune Alma ve Analizi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-toplam-toz-numune-alma-ve-analiz-108">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-solunabilir-toz-numune-alma-ve-analiz-109">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2419" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Solunabilir Toz Numune Alma ve Analizi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2419" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Solunabilir Toz Numune Alma ve Analizi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-solunabilir-toz-numune-alma-ve-analiz-109">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-gaz-ve-buhar-konsantrasyon-olcumu-110">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2402" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Gaz ve Buhar Konsantrasyon Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2402" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Gaz ve Buhar Konsantrasyon Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-gaz-ve-buhar-konsantrasyon-olcumu-110">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-ucucu-organik-bilesik-voc-numune-alma-ve-analiz-111">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2418" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Uçucu Organik Bileşik (VOC) Numune Alma ve Analizi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/shop/category/periyodik-kontroller-tesisat-grubu-yangn-tesisat-97" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Uçucu Organik Bileşik (VOC) Numune Alma ve Analizi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-ucucu-organik-bilesik-voc-numune-alma-ve-analiz-111">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-agr-metal-numune-alma-ve-analiz-112">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2408" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Ağır Metal Numune Alma ve Analizi</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2408" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Ağır Metal Numune Alma ve Analizi</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-agr-metal-numune-alma-ve-analiz-112">
+                    </a>
+
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-kisisel-gaz-maruziyeti-olcumu-113">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2413" alt="Image 4" loading="lazy" />
-                    <div class="carousel-title">Kişisel Gaz Maruziyeti Ölçümü</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2413" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Kişisel Gaz Maruziyeti Ölçümü</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/is-hijyeni-laboratuvar-kimyasal-etkenler-kisisel-gaz-maruziyeti-olcumu-113">
+                    </a>
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -622,34 +665,36 @@
             <div class="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/muhendislik-hizmetleri-patlamadan-korunma-dokumantasyonu-115">
-                                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/2409" alt="Image 4" loading="lazy" />
-
-                      <div class="carousel-title">Patlamadan Korunma Dökümantasyonu</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2411" alt="Image 1" loading="lazy" />
+                  <div class="carousel-title">Patlamadan Korunma Dökümantasyonu</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/muhendislik-hizmetleri-patlamadan-korunma-dokumantasyonu-115">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/muhendislik-hizmetleri-statik-analiz-116">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/2417" alt="Image 2" loading="lazy" />
-                    <div class="carousel-title">Statik Analiz</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2414" alt="Image 3" loading="lazy" />
+                  <div class="carousel-title">Statik Analiz</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/muhendislik-hizmetleri-statik-analiz-116">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="https://odoo-184727-0.cloudclusters.net/shop/category/muhendislik-hizmetleri-tesisat-proje-degerlendirme-117">
-                    <img src="https://odoo-184727-0.cloudclusters.net/web/image/912" alt="Image 2" loading="lazy"/>
-                    <div class="carousel-title">Tesisat Proje Değerlendirme</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/689-973b0c30/kanca%20alt%C4%B1.png" alt="Image 2" loading="lazy" />
+                  <div class="carousel-title">Tesisat Proje Değerlendirme</div>
+                  <div class="item-overlay">
+                    <a href="/shop/category/muhendislik-hizmetleri-tesisat-proje-degerlendirme-117">
+                    </a>
+                  </div>
                 </div>
                 <div class="carousel-item">
-                  <a href="#">
-                                        <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 1" loading="lazy" />
-
-                      <div class="carousel-title">Gelecek</div>
-                  </a>
-                  <div class="item-overlay"></div>
+                  <img src="https://odoo-184727-0.cloudclusters.net/web/image/2423" alt="Image 4" loading="lazy" />
+                  <div class="carousel-title">Yangın Tesisatı Proje Değerlendirme</div>
+                  <div class="item-overlay">
+                    <a href="/shop/yangn-tesisat-proje-degerlendirme-207">
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -671,7 +716,6 @@
         </div>
       </div>
       <div class="overlay"></div>
-
     </div>
 
     <script type="text/javascript">
@@ -715,14 +759,14 @@
                   carouselInner.style.transition = 'none';
                   currentIndex = 0;
                   const resetOffset = -currentIndex * 190;
-                  carouselInner.style.transform = translateX(${resetOffset}px);
+                  carouselInner.style.transform = `translateX(${resetOffset}px)`;
 
                   setTimeout(() =&gt; {
                       carouselInner.style.transition = 'transform 0.5s ease';
                   }, 0);
                   } else {
                   const offset = -currentIndex * 190;
-                  carouselInner.style.transform = translateX(${offset}px);
+                  carouselInner.style.transform = `translateX(${offset}px)`;
                   }
               }, 3000);
               });
@@ -738,7 +782,7 @@
           const targetElement2 = document.getElementById("o_wblog_post_top");
           const targetElement3 = document.getElementById("products_grid");
           const targetElement4 = document.getElementById("product_detail");
-          let top_element;
+          let top_element; 
           let lm=0; let hasExecuted = false;
           const bottomElement = document.getElementById("bottom");
           const ScrollElement = document.getElementById("wrapwrap");
@@ -772,7 +816,7 @@
             const topPosition = top_element.getBoundingClientRect().top;
             const sideTopPosition = sideMenu.getBoundingClientRect().top;
             const offsetY = topPosition - sideTopPosition - 20;
-            sideMenu.style.marginTop = ${offsetY}px;
+            sideMenu.style.marginTop = `${offsetY}px`;
           }
 
 
@@ -795,9 +839,9 @@
                 // Hedef element görünüyorsa
                 if (targetRect.bottom &gt; 0) {
                     const scrollY = ScrollElement.scrollTop; // Scroll miktarını al
-                    sideMenu.style.transform = translateY(${-scrollY}px); hasExecuted=false;
+                    sideMenu.style.transform = `translateY(${-scrollY}px)`; hasExecuted=false;
                 }else if(!hasExecuted){
-                  sideMenu.style.marginTop = ${45}px; hasExecuted=true;
+                  sideMenu.style.marginTop = `${45}px`; hasExecuted=true;
                   console.log("ters");
                 }
               }
