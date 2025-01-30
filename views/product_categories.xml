@@ -189,7 +189,7 @@
                                             </t>
                                             <t t-else="...">...</t>
                                         </div>
-                                        <div class="custom-hizmet-aciklama p-2 h-25">
+                                        <div class="custom-hizmet-aciklama p-2 pt-0 h-25">
                                             <t t-if="related_product and related_product.description_sale">
                                                 <t t-esc="related_product.description_sale[:70] + ('...' if len(related_product.description_sale) > 70 else '')"></t>
                                             </t>
