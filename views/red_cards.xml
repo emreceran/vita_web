@@ -3,12 +3,11 @@
         <style>
             .custom-cards-container {
             width: 100%;
-<!--            max-width: 960px;-->
             display: flex;
+            flex-wrap: wrap;
             margin-bottom: 20px;
             padding: 0;
             background: linear-gradient(to right, #001f3f , #0074d9   );
-<!--            overflow:hidden;-->
             }
 
             .custom-cards {
@@ -67,18 +66,18 @@
             background: #001f3f;
             }
 
-            <!--            /* Kart Renkleri */-->
-            <!--            .custom-card1 {-->
-            <!--                background-color: #b04656;-->
-            <!--            }-->
-
-            <!--            .custom-card2 {-->
-            <!--                background-color: #913A47;-->
-            <!--            }-->
-
             .custom-card3 {
             background-color: #636466;
             }
+            @media (max-width: 992px){
+
+                .custom-cards {
+                    flex: 0 1 auto;
+                    width: 100% !important;
+                    justify-content: center;
+                }
+            }
+
         </style>
 
         <div class="red_cards mobillisil">
