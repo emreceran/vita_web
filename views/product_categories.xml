@@ -175,7 +175,7 @@
                 <div class="container-fluid my-5" style="">
                     <div class="row px-5 g-3">
                         <t t-set="product_model" t-value="env['product.template']"/>
-                        <t t-set="random_products" t-value="product_model.get_random_products( product.id, 15)"/>
+                        <t t-set="random_products" t-value="product_model.get_random_products( product.id, 16)"/>
                         <t t-foreach="random_products" t-as="related_product">
                             <div class="col-12 col-md-6 col-xl-4 col-xxl-3" style="height: 200px ;">
                                 <a t-att-href="related_product.website_url" class="services_link h-100">
