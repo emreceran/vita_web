@@ -61,7 +61,7 @@
                 <t t-if="product.faq_question1">
                     <div class="faq-item">
                         <div class="faq-question" >
-                            <h3 style="" t-esc="product.faq_question1" />
+                            <div t-esc="product.faq_question1"></div>
 
                         </div>
                         <div class="faq-answer" t-field="product.faq_answer1"></div>
@@ -72,7 +72,7 @@
                 <t t-if="product.faq_question2">
                     <div class="faq-item">
                         <div class="faq-question" >
-                            <h3 style="" t-esc="product.faq_question2" />
+                           <div t-esc="product.faq_question2"></div>
                         </div>
                         <div class="faq-answer" t-field="product.faq_answer2"></div>
                     </div>
@@ -82,7 +82,7 @@
                 <t t-if="product.faq_question3">
                     <div class="faq-item">
                         <div class="faq-question" >
-                            <h3 style="" t-esc="product.faq_question3" />
+                           <div t-esc="product.faq_question3"></div>
                         </div>
                         <div class="faq-answer" t-field="product.faq_answer3"></div>
                     </div>
