@@ -76,9 +76,9 @@
 
                                 <!-- Ürün Başlık ve Açıklama Alanı (Ortalanmış, 8 Kolon Genişlikte) -->
                                 <div class="text-center custom-gap" id="product_info">
-                                    <h2 itemprop="name">
+                                    <h1 itemprop="name">
                                         <t t-esc="product.name"/>
-                                    </h2>
+                                    </h1>
                                 </div>
 
                                 <!-- Ürün Özgün İçerik Alanı (Drag-and-Drop) -->
