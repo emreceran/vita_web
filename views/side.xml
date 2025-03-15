@@ -710,9 +710,28 @@
           <div class="h5 text-muted">
             <span class="fw-bold text-mute">VİTA</span> Destek ?
           </div>
-          <div class="h4 p-0 m-0">
-            <a class="text-danger p-0 m-0" href="tel:+903122861636">0312 286 16 36</a>
+          <!-- <div class="h4 p-0 m-0">
+            <a class="text-danger p-0 m-0" href="tel:+905357457088">0532 521 97 86</a>
+            <div class="text-end fs-small text-muted pe-5">Emre DIĞRAK</div>
           </div>
+          <div class="h4 pt-3 m-0">
+            <a class="text-danger p-0 m-0" href="tel:+905357457088">0535 745 70 88</a>
+            <div class="text-end fs-small text-muted">Ali Cihan YILMAZ</div>
+          </div> -->
+          <blockquote class="blockquote text-center border-0">
+            <p class="mb-0">
+              <a class="text-danger p-0 m-0" href="tel:+905357457088">0532 521 97 86</a>
+            </p>
+            <footer class="text-muted small">Emre <cite title="Source Title">DIĞRAK</cite>
+            </footer>
+          </blockquote>
+          <blockquote class="blockquote text-center border-0">
+            <p class="mb-0">
+              <a class="text-danger p-0 m-0" href="tel:+905357457088">0535 745 70 88</a>
+            </p>
+            <footer class="text-muted small">Ali Cihan <cite title="Source Title">YILMAZ</cite>
+            </footer>
+          </blockquote>
         </div>
       </div>
       <div class="overlay"></div>
